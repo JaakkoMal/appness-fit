@@ -8,8 +8,8 @@ const Tab = createBottomTabNavigator()
 const tabBarOptions = {
     headerShown: false,
     tabBarActiveTintColor: '#c0eb6a',
-    tabBarInactiveBackgroundColor: '#42564f',
-    tabBarActiveBackgroundColor: '#42564f',
+    tabBarInactiveBackgroundColor: '#484d4b',
+    tabBarActiveBackgroundColor: '#484d4b',
     tabBarStyle: {
         borderTopWidth: 0
     }

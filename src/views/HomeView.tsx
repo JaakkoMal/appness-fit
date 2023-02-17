@@ -4,7 +4,7 @@ import MainHeading from '../components/textcomponents/MainHeading'
 
 export default function HomeView() {
   return (
-    <ScrollView style={{backgroundColor: '#42564f'}}>
+    <ScrollView style={{backgroundColor: '#484d4b'}}>
         <View style={styles.container}>
             <MainHeading text="Appness Fit" />
         </View>

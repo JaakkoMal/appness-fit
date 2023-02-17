@@ -5,7 +5,7 @@ import LoginView from './src/views/LoginView'
 import MainNavigator from './src/navigation/TabNavigator'
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   
   if (!isLoggedIn) return <LoginView />
   return (
@@ -23,6 +23,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#42564f'
+    backgroundColor: '#484d4b'
   }
 })
