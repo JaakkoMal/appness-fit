@@ -3,26 +3,27 @@ import { View, Text, StyleSheet } from 'react-native'
 import { useFonts } from 'expo-font'
 
 type Props = {
-    text: string
+    text: string,
     fontSize?: number
 }
 
-export default function MainHeading({text, fontSize}: Props) {
+export default function GeneralText({text, fontSize}: Props) {
 
   const [fontLoaded] = useFonts({
     'Dosis-Light': require('../../../assets/fonts/Dosis-Light.ttf')
-  })  
+  })    
 
   if (!fontLoaded) return null
   return (
-      <Text style={[styles.heading, {fontSize: fontSize}]}>{text}</Text>
+    <Text style={[styles.text, {fontSize: fontSize}]}>{text}</Text>
   )
 }
 
 const styles = StyleSheet.create({
-    heading: {
+    text: {
         fontFamily: 'Dosis-Light',
-        fontSize: 36,
+        fontSize: 16,
         color: '#c0eb6a'
     }
 })
+
