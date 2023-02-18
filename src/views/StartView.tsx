@@ -5,16 +5,23 @@ import MainHeading from '../components/textcomponents/MainHeading'
 import TextLabel from '../components/textcomponents/TextLabel'
 import CustomButton from '../components/buttons/CustomButton'
 import LoginModal from '../components/modals/LoginModal'
-
 //RTK
 import { useAppDispatch } from '../app/hooks'
 import { login } from '../features/loginSlice'
+//Firebase
+import { getAuth, signInWithEmailAndPassword } from '../../firebase/firebaseConfig'
+//Types 
+import { loginCredentials, LoginStackParamList } from '../types/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+type Props = NativeStackScreenProps<LoginStackParamList, 'Start'>
 
 const image = require('../../assets/images/start-view-image.jpg')
 
-export default function StartView() {
+export default function StartView({navigation}: Props) {
+
   const dispatch = useAppDispatch()
   const [modalVisible, setModalVisible] = useState<boolean>(false)
+  const [loginCredentials, setLoginCredentials] = useState<loginCredentials>({email: '', password: ''})
   
   const closeModal = () => {
     setModalVisible(false)
@@ -22,6 +29,30 @@ export default function StartView() {
 
   const openModal = () => {
     setModalVisible(true)
+  }
+
+  const onChangeEmail = (email: string) => {
+    setLoginCredentials({...loginCredentials, email: email})
+    console.log(email)
+  }
+
+  const onChangePassword = (password: string) => {
+    setLoginCredentials({...loginCredentials, password: password})
+    console.log(password)
+  }
+
+  const signIn = async() => {
+    const auth = getAuth()
+    signInWithEmailAndPassword(auth, loginCredentials.email, loginCredentials.password)
+    .then((userCredentials) => {
+      const user = userCredentials.user
+      dispatch(login())
+      console.log(user)
+    })
+  }
+
+  const goToSignUpView = () => {
+    navigation.navigate('SignUp')
   }
 
   return (
@@ -32,14 +63,19 @@ export default function StartView() {
         <View style={{flex: 3}}></View>
         <View style={styles.buttonContainer}>
             <CustomButton text='Login' onPress={openModal}/>
-            <CustomButton text='Sign Up' />
+            <CustomButton text='Sign Up' onPress={goToSignUpView} />
         </View>
         <Modal
           visible={modalVisible}
           onRequestClose={closeModal}
           transparent={true}
         >
-          <LoginModal closeModal={closeModal} />
+          <LoginModal 
+            closeModal={closeModal} 
+            onChangeEmail={onChangeEmail} 
+            onChangePassword={onChangePassword}
+            onSubmit={signIn}
+          />
         </Modal>
       </ImageBackground>
     </View>

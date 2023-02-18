@@ -1,25 +1,31 @@
 import React from 'react'
 import { View, StyleSheet, Button, TextInput } from 'react-native'
-
+import CustomButton from '../buttons/CustomButton'
 
 type Props = {
     closeModal: () => void
+    onChangeEmail: (email: string) => void
+    onChangePassword: (password: string) => void
+    onSubmit: () => void
 }
 
-export default function LoginModal({closeModal}: Props) {
+export default function LoginModal({closeModal, onChangeEmail, onChangePassword, onSubmit}: Props) {
   return (
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
         <TextInput 
             style={styles.input}
-            onChangeText={() => {}}
+            onChangeText={onChangeEmail}
+            keyboardType='email-address'
             placeholder='email'
         />
         <TextInput 
             style={styles.input}
-            onChangeText={() => {}}
+            onChangeText={onChangePassword}
+            secureTextEntry={true}
             placeholder='password'
         />
+        <CustomButton text='submit' onPress={onSubmit} />
         <Button color='#c0eb6a' title='Close' onPress={closeModal} />
       </View>
     </View>

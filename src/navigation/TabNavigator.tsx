@@ -1,9 +1,10 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { TabNavParamList } from '../types/types'
 import HomeStack from './HomeStack'
 import ProfileView from '../views/ProfileView'
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator<TabNavParamList>()
 
 const tabBarOptions = {
     headerShown: false,
@@ -19,7 +20,7 @@ export default function TabNavigator() {
   return (
     <Tab.Navigator screenOptions={tabBarOptions}>
         <Tab.Screen name="HomeStack" component={HomeStack}/>
-        <Tab.Screen name='My Profile' component={ProfileView}/>
+        <Tab.Screen name='MyProfile' component={ProfileView}/>
     </Tab.Navigator>
   )
 }
