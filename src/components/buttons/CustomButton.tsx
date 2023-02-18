@@ -4,12 +4,13 @@ import React from 'react'
 
 type Props = {
     text: string,
+    onPress?: () => void
 }
 
-export default function CustomButton({text}: Props) {
+export default function CustomButton({text, onPress}: Props) {
   return (
     <Pressable 
-      onPress={() => {}} 
+      onPress={onPress} 
       style={({pressed}) => [
         pressed ? styles.buttonPressed : styles.button
       ]}>

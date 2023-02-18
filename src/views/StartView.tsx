@@ -5,9 +5,19 @@ import MainHeading from '../components/textcomponents/MainHeading'
 import GeneralText from '../components/textcomponents/GeneralText'
 import CustomButton from '../components/buttons/CustomButton'
 
+//RTK
+import { useAppDispatch } from '../app/hooks'
+import { login } from '../features/loginSlice'
+
 const image = require('../../assets/images/start-view-image.jpg')
 
 export default function StartView() {
+  const dispatch = useAppDispatch()
+  
+  const logIn = () => {
+    dispatch(login())
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.image} resizeMode='cover'>
@@ -15,7 +25,7 @@ export default function StartView() {
         <GeneralText text='Your partner in workout & diet' fontSize={12}/>
         <View style={{flex: 3}}></View>
         <View style={styles.buttonContainer}>
-            <CustomButton text='Login' />
+            <CustomButton text='Login' onPress={logIn}/>
             <CustomButton text='Sign Up' />
         </View>
       </ImageBackground>
