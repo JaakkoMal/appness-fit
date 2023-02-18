@@ -1,5 +1,5 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
-import GeneralText from '../textcomponents/GeneralText'
+import GeneralText from '../textcomponents/TextLabel'
 import React from 'react'
 
 type Props = {

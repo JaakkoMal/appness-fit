@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Constants from 'expo-constants'
-import { View, StyleSheet, ImageBackground } from 'react-native'
+import { View, StyleSheet, ImageBackground, Modal } from 'react-native'
 import MainHeading from '../components/textcomponents/MainHeading'
-import GeneralText from '../components/textcomponents/GeneralText'
+import TextLabel from '../components/textcomponents/TextLabel'
 import CustomButton from '../components/buttons/CustomButton'
+import LoginModal from '../components/modals/LoginModal'
 
 //RTK
 import { useAppDispatch } from '../app/hooks'
@@ -13,21 +14,33 @@ const image = require('../../assets/images/start-view-image.jpg')
 
 export default function StartView() {
   const dispatch = useAppDispatch()
+  const [modalVisible, setModalVisible] = useState<boolean>(false)
   
-  const logIn = () => {
-    dispatch(login())
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
+  const openModal = () => {
+    setModalVisible(true)
   }
 
   return (
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.image} resizeMode='cover'>
         <MainHeading text='Appness Fit' fontSize={48} />
-        <GeneralText text='Your partner in workout & diet' fontSize={12}/>
+        <TextLabel text='Your partner in workout & diet' fontSize={12}/>
         <View style={{flex: 3}}></View>
         <View style={styles.buttonContainer}>
-            <CustomButton text='Login' onPress={logIn}/>
+            <CustomButton text='Login' onPress={openModal}/>
             <CustomButton text='Sign Up' />
         </View>
+        <Modal
+          visible={modalVisible}
+          onRequestClose={closeModal}
+          transparent={true}
+        >
+          <LoginModal closeModal={closeModal} />
+        </Modal>
       </ImageBackground>
     </View>
   )

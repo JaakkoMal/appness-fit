@@ -7,7 +7,7 @@ type Props = {
     fontSize?: number
 }
 
-export default function GeneralText({text, fontSize}: Props) {
+export default function TextLabel({text, fontSize}: Props) {
 
   const [fontLoaded] = useFonts({
     'Dosis-Light': require('../../../assets/fonts/Dosis-Light.ttf')
