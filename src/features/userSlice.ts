@@ -7,7 +7,6 @@ const initialState: UserState = {
     userId: '',
     isLoggedIn: false,
     email: '',
-    username: '',
     password: '',
     firstName: '',
     lastName: '',
@@ -33,9 +32,6 @@ export const userSlice = createSlice({
         },
         setEmail: (state, action: PayloadAction<string>) => {
             state.email = action.payload
-        },
-        setUsername: (state, action: PayloadAction<string>) => {
-            state.username = action.payload
         },
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload
@@ -64,6 +60,6 @@ export const userSlice = createSlice({
     }
 })
 
-export const { setUserId, login, logout, setEmail, setUsername, setPassword, setFirstName, setLastName, setHeight, setWeight, setGoalWeight, setGender, setActivityLevel } = userSlice.actions
+export const { setUserId, login, logout, setEmail, setPassword, setFirstName, setLastName, setHeight, setWeight, setGoalWeight, setGender, setActivityLevel } = userSlice.actions
 export const selectUser = (state: RootState) => state
 export default userSlice.reducer

@@ -30,7 +30,6 @@ export interface UserState {
     userId: string 
     isLoggedIn: boolean
     email: string
-    username: string
     password: string
     firstName: string
     lastName: string

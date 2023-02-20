@@ -21,7 +21,6 @@ const addUserInfo = async (user: UserState, uid: string) => {
         userId: uid,
         isLoggedIn: user.isLoggedIn,
         email: user.email,
-        username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
         height: user.height,
