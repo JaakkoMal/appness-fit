@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         elevation: 5, 
     },
     input: {
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(99, 87, 87, 0.5)',
         height: 40,
         width: '100%',
         margin: 12,

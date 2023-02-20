@@ -5,9 +5,10 @@ import MainHeading from '../components/textcomponents/MainHeading'
 import TextLabel from '../components/textcomponents/TextLabel'
 import CustomButton from '../components/buttons/CustomButton'
 import LoginModal from '../components/modals/LoginModal'
+import { getUserInfo } from '../utils/firebaseFunctions/userFunctions'
 //RTK
 import { useAppDispatch } from '../app/hooks'
-import { login } from '../features/loginSlice'
+import { login } from '../features/userSlice'
 //Firebase
 import { getAuth, signInWithEmailAndPassword } from '../../firebase/firebaseConfig'
 //Types 
@@ -48,6 +49,10 @@ export default function StartView({navigation}: Props) {
       const user = userCredentials.user
       dispatch(login())
       console.log(user)
+      getUserInfo(user.uid)
+    })
+    .catch((error) => {
+      alert(error.message)
     })
   }
 

@@ -1,15 +1,13 @@
 import React from 'react'
-import { View, Text, ScrollView, StyleSheet, ImageBackground } from 'react-native'
+import { ScrollView, StyleSheet, ImageBackground } from 'react-native'
 import Constants from 'expo-constants'
 import MainHeading from '../components/textcomponents/MainHeading'
 import TextLabel from '../components/textcomponents/TextLabel'
 import SignUpForm from '../components/forms/SignUpForm'
-import { LoginStackParamList } from '../types/types'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-type Props = NativeStackScreenProps<LoginStackParamList, 'SignUp'>
+
 const image = require('../../assets/images/signup-view-image.jpg')
 
-export default function SignUpView({navigation}: Props) {
+export default function SignUpView() {
   return (
     <ImageBackground source={image} style={styles.image} resizeMode='cover'>
       <MainHeading text='Appness Fit' fontSize={48} />
