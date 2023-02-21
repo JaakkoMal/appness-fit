@@ -5,17 +5,30 @@ import AppPressable from '../components/buttons/AppPressable'
 import { homeViewStrings } from '../constants/constants'
 import { BarbellIcon, ClipBoardIcon, StatsIcon } from '../constants/Icons'
 
-export default function HomeView() {
-  const { quickWorkoutDescription, chooseAWorkoutDescription, newWorkoutDescription, myProgressDescription } = homeViewStrings
+import { HomeStackParamList } from '../types/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>
+
+export default function HomeView({navigation}: Props) {
+
+  const { 
+    quickWorkoutDescription, 
+    chooseAWorkoutDescription, newWorkoutDescription, 
+    myProgressDescription 
+  } = homeViewStrings
+
+  const goToQuickWorkout = () => {
+    navigation.navigate('QuickWorkout')
+  }
 
   return (
     <View style={styles.container}>
       <MainHeading text="Appness Fit" fontSize={20} />
         <ScrollView style={styles.contentContainer}>
-          <AppPressable title='Quick workout' description={quickWorkoutDescription} Icon={BarbellIcon}/>
-          <AppPressable title='Choose a workout' description={chooseAWorkoutDescription} Icon={BarbellIcon}/>
-          <AppPressable title='New workout' description={newWorkoutDescription} Icon={ClipBoardIcon} />
-          <AppPressable title='My Progress' description={myProgressDescription} Icon={StatsIcon} />
+          <AppPressable title='Quick workout' description={quickWorkoutDescription} Icon={BarbellIcon} onPress={goToQuickWorkout}/>
+          <AppPressable title='Choose a workout' description={chooseAWorkoutDescription} Icon={BarbellIcon} onPress={() => {}}/>
+          <AppPressable title='New workout' description={newWorkoutDescription} Icon={ClipBoardIcon} onPress={() => {}}/>
+          <AppPressable title='My Progress' description={myProgressDescription} Icon={StatsIcon} onPress={() => {}}/>
         </ScrollView>
     </View>
   )

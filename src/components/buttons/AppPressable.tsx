@@ -7,14 +7,17 @@ type Props = {
     title: string
     description: string
     Icon: () => JSX.Element
+    onPress: () => void
 }
 
-export default function AppPressable({title, description, Icon}: Props) {
+export default function AppPressable({title, description, Icon, onPress}: Props) {
   return (
     <Pressable 
       style={({pressed}) => [
         pressed ? styles.pressed : styles.container
-      ]}>
+      ]}
+      onPress={onPress}
+      >
       <TextLabel text={title} fontSize={24}/>
       <TextLabel text={description} fontSize={16} />
       <View style={{height: 12}}/>
