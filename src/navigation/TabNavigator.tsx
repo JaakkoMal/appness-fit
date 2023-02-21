@@ -1,6 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { TabNavParamList } from '../types/types'
+import { HomeIcon, ProfileIcon } from '../constants/Icons'
 import HomeStack from './HomeStack'
 import ProfileView from '../views/ProfileView'
 
@@ -19,8 +20,24 @@ const tabBarOptions = {
 export default function TabNavigator() {
   return (
     <Tab.Navigator screenOptions={tabBarOptions}>
-        <Tab.Screen name="HomeStack" component={HomeStack}/>
-        <Tab.Screen name='MyProfile' component={ProfileView}/>
+        <Tab.Screen 
+          name="HomeStack" 
+          component={HomeStack}
+          options={{
+            tabBarIcon: () => (
+              <HomeIcon />
+            )
+          }}
+        />
+        <Tab.Screen 
+          name='MyProfile' 
+          component={ProfileView}
+          options={{
+            tabBarIcon: () => (
+              <ProfileIcon />
+            )
+          }}
+        />
     </Tab.Navigator>
   )
 }
