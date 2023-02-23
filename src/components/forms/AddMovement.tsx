@@ -30,17 +30,18 @@ export default function AddMovement({id}: Props) {
       <TextInput 
         style={styles.input}
         textAlign='center'
-        placeholder='movement name'
+        placeholder='exercise name'
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
         onChangeText={text => dispatch(addMovementName({movementId: id, name: text}))}
       />
       {
         inputFields.map(field => (
-            <View key={field.id} style={styles.container}>
+            <View key={field.id} style={styles.innerContainer}>
               <Text style={{color: '#c0eb6a'}}>Set {field.id}</Text>
               <TextInput 
                 style={styles.smallInput}
                 textAlign='center'
+                keyboardType='numeric'
                 placeholder='reps'
                 placeholderTextColor='rgba(232, 246, 222, 0.8)'
                 onChangeText={text => dispatch(addReps({movementId: id, setNumber: field.id, reps: Number(text)}))}
@@ -48,6 +49,7 @@ export default function AddMovement({id}: Props) {
               <TextInput 
                 style={styles.smallInput}
                 textAlign='center'
+                keyboardType='numeric'
                 placeholder='weight'
                 placeholderTextColor='rgba(232, 246, 222, 0.8)'
                 onChangeText={text => dispatch(addWeight({movementId: id, setNumber: field.id, weight: Number(text)}))}
@@ -55,7 +57,7 @@ export default function AddMovement({id}: Props) {
             </View>
         ))
       }
-    <CustomButton text='+ set' onPress={addInputField} />
+    <CustomButton text='+ set' fontSize={20} onPress={addInputField} />
     </View>
   )
 }
@@ -66,6 +68,15 @@ const styles = StyleSheet.create({
           width: '100%',
           justifyContent: 'center',
           alignItems: 'center',
+          borderBottomColor: '#535957',
+          borderBottomWidth: 1
+      },
+      innerContainer: {
+        flex: 1,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 12
       },
       input: {
           backgroundColor: 'rgba(99, 87, 87, 0.5)',

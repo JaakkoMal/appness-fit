@@ -1,20 +1,27 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
-import GeneralText from '../textcomponents/TextLabel'
+import TextLabel from '../textcomponents/TextLabel'
 import React from 'react'
 
 type Props = {
     text: string,
-    onPress?: () => void
+    onPress: () => void
+    color?: string
+    fontSize?: number
 }
 
-export default function CustomButton({text, onPress}: Props) {
+export default function CustomButton({text, onPress, color, fontSize}: Props) {
   return (
     <Pressable 
       onPress={onPress} 
-      style={({pressed}) => [
+      style={color ? ({pressed}) => [
+        pressed ? styles.buttonPressed : ([styles.button, {backgroundColor: color}])
+      ]
+      : ({pressed}) => [
         pressed ? styles.buttonPressed : styles.button
-      ]}>
-        <GeneralText text={text} fontSize={24}/>
+      ]
+      }
+      >
+        <TextLabel text={text} fontSize={fontSize ? fontSize : 24}/>
     </Pressable>
   )
 }

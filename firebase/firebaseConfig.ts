@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
+import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,5 +23,8 @@ export {
     db,
     doc,
     getDoc,
-    setDoc
+    setDoc,
+    updateDoc,
+    arrayUnion,
+    arrayRemove
 }

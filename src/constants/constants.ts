@@ -33,5 +33,6 @@ export const homeViewStrings = {
   quickWorkoutDescription: 'Log a workout without choosing a pre-defined program',
   chooseAWorkoutDescription: 'Log a workout using a pre-defined template',
   newWorkoutDescription: 'Create a new workout template',
-  myProgressDescription: 'Track your weight and workout data'
+  myProgressDescription: 'Track your weight and workout data',
+  workoutHistoryDescription: 'View all of your workout history'
 }

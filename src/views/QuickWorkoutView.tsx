@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, StyleSheet, Text } from 'react-native'
+import { View, ScrollView, StyleSheet,  } from 'react-native'
 import MainHeading from '../components/textcomponents/MainHeading'
 import AddMovement from '../components/forms/AddMovement'
 import CustomButton from '../components/buttons/CustomButton'
@@ -19,15 +19,15 @@ export default function QuickWorkoutView({
 
   return (
     <View style={styles.container}>
-      <MainHeading text="Quick workout" fontSize={20} />
-        <ScrollView style={styles.contentContainer}>
+      <MainHeading text="Quick workout" fontSize={24} />
+        <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
           {inputFields.map(field => (
             <View key={field.id}>
                 <AddMovement id={field.id} />
             </View>
           ))}
           <CustomButton text='+ exercise' onPress={addInputField} />
-          <CustomButton text='Finish' onPress={saveWorkout} />
+          <CustomButton text='Finish' onPress={saveWorkout} color='rgba(250, 167, 72, 0.5)'/>
         </ScrollView>
     </View>
   )
@@ -35,16 +35,16 @@ export default function QuickWorkoutView({
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingLeft: 20,
-        paddingRight: 20,
-        backgroundColor: '#484d4b'
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingLeft: 20,
+      paddingRight: 20,
+      backgroundColor: '#484d4b'
     },
     contentContainer: {
       flex: 1,
       marginTop: 40,
       width: '100%',
-    }
+    },
 })

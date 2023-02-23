@@ -3,20 +3,14 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../app/store'
 import { WorkoutsState, QuickWorkoutState } from '../types/types'
 
-const initialState: WorkoutsState = {
-    userId: '',
-    workouts: []
-}
+const initialState: WorkoutsState = []
 
 export const workoutsSlice = createSlice({
     name: 'workouts',
     initialState,
     reducers: {
-        setUserId: (state, action: PayloadAction<string>) => {
-            state.userId = action.payload
-        },
         addWorkout: (state, action: PayloadAction<QuickWorkoutState>) => {
-            state.workouts.push(action.payload)
+            state.push(action.payload)
         },
         setWorkouts: (state, action: PayloadAction<WorkoutsState>) => {
             return action.payload
@@ -25,7 +19,6 @@ export const workoutsSlice = createSlice({
 })
 
 export const { 
-    setUserId,
     addWorkout,
     setWorkouts  
  } = workoutsSlice.actions

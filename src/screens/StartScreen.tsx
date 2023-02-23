@@ -4,10 +4,11 @@ import StartView from '../views/StartView'
 import { useAppDispatch } from '../app/hooks'
 import { login } from '../features/loginSlice'
 import { setUser } from '../features/userSlice'
+import { setWorkouts } from '../features/workoutsSlice'
 //Firebase
 import { getAuth, signInWithEmailAndPassword, db, doc, getDoc  } from '../../firebase/firebaseConfig'
 //Types 
-import { LoginCredentials, LoginStackParamList, UserState } from '../types/types'
+import { LoginCredentials, LoginStackParamList, UserState, WorkoutsState } from '../types/types'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 type Props = NativeStackScreenProps<LoginStackParamList, 'Start'>
 
@@ -42,6 +43,7 @@ export default function StartScreen({navigation}: Props) {
       const user = userCredentials.user
       dispatch(login())
       getUserInfo(user.uid)
+      getWorkoutInfo(user.uid)
     })
     .catch((error) => {
       alert(error.message)
@@ -53,7 +55,6 @@ export default function StartScreen({navigation}: Props) {
     const docSnap = await getDoc(userDocRef)
 
     if (docSnap.exists()) {
-        //dispatch(setUserId(docSnap.data().userId))
         const user: UserState = {
           userId: docSnap.data().userId, 
           email: docSnap.data().email,
@@ -71,7 +72,19 @@ export default function StartScreen({navigation}: Props) {
     } else {
         console.log('No such document')
     }
-}
+  }
+
+  const getWorkoutInfo = async (userId: string) => {
+    const workoutsDocRef = doc(db, 'Workouts', userId)
+    const docSnap = await getDoc(workoutsDocRef)
+
+    if (docSnap.exists()) {
+      const workouts: WorkoutsState = docSnap.data().workouts
+      dispatch(setWorkouts(workouts))
+    } else {
+      console.log('No workouts document found')
+    }
+  }
 
   const goToSignUpView = () => {
     navigation.navigate('SignUp')

@@ -22,6 +22,7 @@ export type TabNavParamList = {
 export type HomeStackParamList = {
     Home: undefined
     QuickWorkout: undefined
+    WorkoutHistory: undefined
 }
 
 // RTK
@@ -65,7 +66,8 @@ export type QuickWorkoutState = {
     workout: Movement[]
 }
 
-export interface WorkoutsState {
-    userId: string
+/*export interface WorkoutsState {
     workouts: QuickWorkoutState[]
-}
+}*/
+
+export type WorkoutsState = QuickWorkoutState[]
