@@ -1,8 +1,8 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomeStackParamList } from '../types/types'
-import HomeView from '../views/HomeView'
-import QuickWorkoutView from '../views/QuickWorkoutView'
+import HomeScreen from '../screens/HomeScreen'
+import QuickWorkoutScreen from '../screens/QuickWorkoutScreen'
 
 const Stack = createNativeStackNavigator<HomeStackParamList>()
 
@@ -11,14 +11,14 @@ export default function HomeStack() {
     <Stack.Navigator>
         <Stack.Screen
             name="Home"
-            component={HomeView}
+            component={HomeScreen}
             options={{
                 headerShown: false
             }}
         />
         <Stack.Screen
             name="QuickWorkout"
-            component={QuickWorkoutView}
+            component={QuickWorkoutScreen}
             options={{
                 headerShown: false
             }}

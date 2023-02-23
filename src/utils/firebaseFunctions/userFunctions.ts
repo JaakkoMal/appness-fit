@@ -7,8 +7,7 @@ export const createUser = (user: UserState) => {
     createUserWithEmailAndPassword(auth, user.email, user.password)
     .then((userCredential) => {
         const createdUser = userCredential.user
-        console.log("USER: ", user)
-        addUserInfo(user, createdUser.uid )
+        addUserInfo(user, createdUser.uid)
     })
     .catch ((error) => {
         console.log("Error code: ", error.code)
@@ -19,19 +18,19 @@ export const createUser = (user: UserState) => {
 const addUserInfo = async (user: UserState, uid: string) => {
     await setDoc(doc(db, 'User', uid), {
         userId: uid,
-        isLoggedIn: user.isLoggedIn,
         email: user.email,
+        password: user.password,
         firstName: user.firstName,
         lastName: user.lastName,
         height: user.height,
-        weightArray: user.weightArray[user.weightArray.length - 1],
+        weightArray: [user.weightArray[user.weightArray.length - 1]],
         goalWeight: user.goalWeight,
         gender: user.gender,
         activityLevel: user.activityLevel
     })
 }
 
-export const getUserInfo = async (userId: string) => {
+/*const getUserInfo = async (userId: string) => {
     const userDocRef = doc(db, 'User', userId)
     const docSnap = await getDoc(userDocRef)
 
@@ -40,4 +39,4 @@ export const getUserInfo = async (userId: string) => {
     } else {
         console.log('No such document')
     }
-}
+}*/

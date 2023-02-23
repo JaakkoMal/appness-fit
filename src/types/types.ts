@@ -1,6 +1,10 @@
-export type loginCredentials = {
+export type LoginCredentials = {
     email: string,
     password: string
+}
+
+export type InputField = {
+    id: number
 }
 
 // NAV
@@ -22,23 +26,26 @@ export type HomeStackParamList = {
 
 // RTK
 
+export interface LoginState {
+    isLoggedIn: boolean
+}
+
 export interface Weight {
-    weight: Number,
+    weight: number,
     weightedOnDate: string
 }
 
 export interface UserState {
     userId: string 
-    isLoggedIn: boolean
     email: string
     password: string
     firstName: string
     lastName: string
-    height: Number | null
+    height: number | null
     weightArray: Weight[]
-    goalWeight: Number | null
+    goalWeight: number | null
     gender: string
-    activityLevel: Number | null
+    activityLevel: number | null
 }
 
 export interface Set {
@@ -56,4 +63,9 @@ export interface Movement {
 export type QuickWorkoutState = {
     workoutDate: string,
     workout: Movement[]
+}
+
+export interface WorkoutsState {
+    userId: string
+    workouts: QuickWorkoutState[]
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AntDesign } from '@expo/vector-icons'
-import StartView from '../views/StartView'
-import SignUpView from '../views/SignUpView'
+import StartScreen from '../screens/StartScreen'
+import SignUpScreen from '../screens/SignUpScreen'
 import { useNavigation } from '@react-navigation/native'
 import { LoginStackParamList } from '../types/types'
 
@@ -16,7 +16,7 @@ export default function HomeStack() {
     <Stack.Navigator>
         <Stack.Screen
             name="Start"
-            component={StartView}
+            component={StartScreen}
             options={{
                 headerTransparent: true,
                 headerTitle: ''
@@ -24,7 +24,7 @@ export default function HomeStack() {
         />
         <Stack.Screen 
             name="SignUp"
-            component={SignUpView}
+            component={SignUpScreen}
             options={{
                 headerTransparent: true,
                 headerTitle: '',

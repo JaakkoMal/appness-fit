@@ -2,24 +2,23 @@ import React from 'react'
 import { View, ScrollView, StyleSheet } from 'react-native'
 import MainHeading from '../components/textcomponents/MainHeading'
 import AppPressable from '../components/buttons/AppPressable'
-import { homeViewStrings } from '../constants/constants'
 import { BarbellIcon, ClipBoardIcon, StatsIcon } from '../constants/Icons'
 
-import { HomeStackParamList } from '../types/types'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>
+type Props = {
+  goToQuickWorkout: () => void
+  quickWorkoutDescription: string
+  chooseAWorkoutDescription: string
+  newWorkoutDescription: string
+  myProgressDescription: string
+}
 
-export default function HomeView({navigation}: Props) {
-
-  const { 
-    quickWorkoutDescription, 
-    chooseAWorkoutDescription, newWorkoutDescription, 
-    myProgressDescription 
-  } = homeViewStrings
-
-  const goToQuickWorkout = () => {
-    navigation.navigate('QuickWorkout')
-  }
+export default function HomeView({
+  goToQuickWorkout,
+  quickWorkoutDescription,
+  chooseAWorkoutDescription,
+  newWorkoutDescription,
+  myProgressDescription
+}: Props) {
 
   return (
     <View style={styles.container}>
