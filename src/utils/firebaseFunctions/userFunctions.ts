@@ -8,6 +8,7 @@ export const createUser = (user: UserState) => {
     .then((userCredential) => {
         const createdUser = userCredential.user
         addUserInfo(user, createdUser.uid)
+        addWorkoutDoc(createdUser.uid)
     })
     .catch ((error) => {
         console.log("Error code: ", error.code)
@@ -27,6 +28,12 @@ const addUserInfo = async (user: UserState, uid: string) => {
         goalWeight: user.goalWeight,
         gender: user.gender,
         activityLevel: user.activityLevel
+    })
+}
+
+const addWorkoutDoc = async (uid: string) => {
+    await setDoc(doc(db, 'Workouts', uid), {
+        workouts: []
     })
 }
 

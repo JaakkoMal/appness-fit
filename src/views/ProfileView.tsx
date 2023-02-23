@@ -28,7 +28,7 @@ export default function ProfileView({ user, workouts }: Props) {
       <Text>{user.gender}</Text>
       <Text>{user.activityLevel}</Text>
       <Text>WORKOUTS</Text>
-      {workouts.workouts.map((workout, i) => (
+      {workouts.map((workout, i) => (
         <View key={i}>
           <Text>{workout.workoutDate}</Text>
           {workout.workout.map((movement, i) => (

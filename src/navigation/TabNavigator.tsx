@@ -13,7 +13,8 @@ const tabBarOptions = {
     tabBarInactiveBackgroundColor: '#484d4b',
     tabBarActiveBackgroundColor: '#484d4b',
     tabBarStyle: {
-        borderTopWidth: 0
+        borderTopWidth: 1,
+        borderTopColor: '#535957'
     }
 }
 

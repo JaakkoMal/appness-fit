@@ -9,21 +9,29 @@ export default function HomeScreen({navigation}: Props) {
 
   const { 
     quickWorkoutDescription, 
-    chooseAWorkoutDescription, newWorkoutDescription, 
-    myProgressDescription 
+    chooseAWorkoutDescription, 
+    newWorkoutDescription, 
+    myProgressDescription,
+    workoutHistoryDescription 
   } = homeViewStrings
 
   const goToQuickWorkout = () => {
     navigation.navigate('QuickWorkout')
   }
 
+  const goToWorkoutHistory = () => {
+    navigation.navigate('WorkoutHistory')
+  }
+
   return (
     <HomeView 
       goToQuickWorkout={goToQuickWorkout}
+      goToWorkoutHistory={goToWorkoutHistory}
       quickWorkoutDescription={quickWorkoutDescription}
       chooseAWorkoutDescription={chooseAWorkoutDescription}
       newWorkoutDescription={newWorkoutDescription}
       myProgressDescription={myProgressDescription}
+      workoutHistoryDescription={workoutHistoryDescription}
     />
   )
 }
