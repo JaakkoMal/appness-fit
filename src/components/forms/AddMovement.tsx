@@ -1,14 +1,11 @@
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import CustomButton from '../buttons/CustomButton'
+import { InputField } from '../../types/types'
 
 // RTK
 import { useAppDispatch } from '../../app/hooks'
-import { addWorkoutDate, addMovementName, addReps, addWeight, addSet } from '../../features/quickWorkoutSlice'
-
-type InputField = {
-    id: number
-}
+import { addMovementName, addReps, addWeight, addSet } from '../../features/quickWorkoutSlice'
 
 type Props = {
     id: number
@@ -32,6 +29,7 @@ export default function AddMovement({id}: Props) {
     <View style={styles.container}>  
       <TextInput 
         style={styles.input}
+        textAlign='center'
         placeholder='movement name'
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
         onChangeText={text => dispatch(addMovementName({movementId: id, name: text}))}
@@ -42,12 +40,14 @@ export default function AddMovement({id}: Props) {
               <Text style={{color: '#c0eb6a'}}>Set {field.id}</Text>
               <TextInput 
                 style={styles.smallInput}
+                textAlign='center'
                 placeholder='reps'
                 placeholderTextColor='rgba(232, 246, 222, 0.8)'
                 onChangeText={text => dispatch(addReps({movementId: id, setNumber: field.id, reps: Number(text)}))}
               />
               <TextInput 
                 style={styles.smallInput}
+                textAlign='center'
                 placeholder='weight'
                 placeholderTextColor='rgba(232, 246, 222, 0.8)'
                 onChangeText={text => dispatch(addWeight({movementId: id, setNumber: field.id, weight: Number(text)}))}
@@ -55,7 +55,7 @@ export default function AddMovement({id}: Props) {
             </View>
         ))
       }
-    <CustomButton text='Add set' onPress={addInputField} />
+    <CustomButton text='+ set' onPress={addInputField} />
     </View>
   )
 }
@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
       input: {
           backgroundColor: 'rgba(99, 87, 87, 0.5)',
           height: 40,
-          width: '100%',
           margin: 16,
           padding: 10,
+          minWidth: 150,
           borderColor: '#c0eb6a',
           borderWidth: 1,
           fontSize: 16,
@@ -81,9 +81,9 @@ const styles = StyleSheet.create({
       smallInput: {
           backgroundColor: 'rgba(99, 87, 87, 0.5)',
           height: 40,
-          width: '33%',
           margin: 10,
           padding: 10,
+          minWidth: 80,
           borderColor: '#c0eb6a',
           borderWidth: 1,
           fontSize: 16,

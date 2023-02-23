@@ -1,31 +1,41 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 import CustomButton from '../buttons/CustomButton'
 import { UserState } from '../../types/types'
-import { setEmail, setPassword, setFirstName, setLastName } from '../../features/userSlice'
-import { useAppDispatch } from '../../app/hooks'
 
 type Props = {
     switchPage: () => void
     user: UserState
+    onChangeEmail: (email: string) => void
+    onChangePassword: (password: string) => void
+    onChangeFirstName: (firstName: string) => void
+    onChangeLastName: (lastName: string) => void
 }
-export default function UserInfoForm({switchPage, user}: Props) {
-  const dispatch = useAppDispatch() // Check if this could be imported from SignUpForm
-
+export default function UserInfoForm({
+  switchPage,
+  user,
+  onChangeEmail,
+  onChangePassword,
+  onChangeFirstName,
+  onChangeLastName
+}: Props) {
+ 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
+        value={user.email}
         placeholder='email'
         keyboardType='email-address'
-        onChangeText={text => dispatch(setEmail(text))}
+        onChangeText={onChangeEmail}
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
       />
       <TextInput
         style={styles.input}
+        value={user.password}
         placeholder='password'
         secureTextEntry={true}
-        onChangeText={text => dispatch(setPassword(text))}
+        onChangeText={onChangePassword}
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
       />
       <TextInput
@@ -37,14 +47,16 @@ export default function UserInfoForm({switchPage, user}: Props) {
       />
       <TextInput
         style={styles.input}
+        value={user.firstName}
         placeholder='first name'
-        onChangeText={text => dispatch(setFirstName(text))}
+        onChangeText={onChangeFirstName}
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
       />
       <TextInput
         style={styles.input}
+        value={user.lastName}
         placeholder='last name'
-        onChangeText={text => dispatch(setLastName(text))}
+        onChangeText={onChangeLastName}
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
       />
       <CustomButton text='NEXT' onPress={switchPage} />

@@ -1,64 +1,33 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Constants from 'expo-constants'
 import { View, StyleSheet, ImageBackground, Modal } from 'react-native'
 import MainHeading from '../components/textcomponents/MainHeading'
 import TextLabel from '../components/textcomponents/TextLabel'
 import CustomButton from '../components/buttons/CustomButton'
 import LoginModal from '../components/modals/LoginModal'
-import { getUserInfo } from '../utils/firebaseFunctions/userFunctions'
-//RTK
-import { useAppDispatch } from '../app/hooks'
-import { login } from '../features/userSlice'
-//Firebase
-import { getAuth, signInWithEmailAndPassword } from '../../firebase/firebaseConfig'
-//Types 
-import { loginCredentials, LoginStackParamList } from '../types/types'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-type Props = NativeStackScreenProps<LoginStackParamList, 'Start'>
 
 const image = require('../../assets/images/start-view-image.jpg')
 
-export default function StartView({navigation}: Props) {
-
-  const dispatch = useAppDispatch()
-  const [modalVisible, setModalVisible] = useState<boolean>(false)
-  const [loginCredentials, setLoginCredentials] = useState<loginCredentials>({email: '', password: ''})
+type Props = {
+  modalVisible: boolean
+  closeModal: () => void
+  openModal: () => void
+  onChangeEmail: (email: string) => void
+  onChangePassword: (password: string) => void
+  signIn: () => void
+  goToSignUpView: () => void
   
-  const closeModal = () => {
-    setModalVisible(false)
-  }
+}
 
-  const openModal = () => {
-    setModalVisible(true)
-  }
-
-  const onChangeEmail = (email: string) => {
-    setLoginCredentials({...loginCredentials, email: email})
-    console.log(email)
-  }
-
-  const onChangePassword = (password: string) => {
-    setLoginCredentials({...loginCredentials, password: password})
-    console.log(password)
-  }
-
-  const signIn = async() => {
-    const auth = getAuth()
-    signInWithEmailAndPassword(auth, loginCredentials.email, loginCredentials.password)
-    .then((userCredentials) => {
-      const user = userCredentials.user
-      dispatch(login())
-      console.log(user)
-      getUserInfo(user.uid)
-    })
-    .catch((error) => {
-      alert(error.message)
-    })
-  }
-
-  const goToSignUpView = () => {
-    navigation.navigate('SignUp')
-  }
+export default function StartView({
+  modalVisible,
+  closeModal,
+  openModal,
+  onChangeEmail,
+  onChangePassword,
+  signIn,
+  goToSignUpView
+}: Props) {
 
   return (
     <View style={styles.container}>

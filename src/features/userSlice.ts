@@ -5,7 +5,6 @@ import { UserState, Weight } from '../types/types'
 
 const initialState: UserState = {
     userId: '',
-    isLoggedIn: false,
     email: '',
     password: '',
     firstName: '',
@@ -24,12 +23,6 @@ export const userSlice = createSlice({
         setUserId: (state, action: PayloadAction<string>) => {
             state.userId = action.payload
         },
-        login: (state) => {
-            state.isLoggedIn = true
-        },
-        logout: (state) => {
-            state.isLoggedIn = false
-        },
         setEmail: (state, action: PayloadAction<string>) => {
             state.email = action.payload
         },
@@ -42,24 +35,39 @@ export const userSlice = createSlice({
         setLastName: (state, action: PayloadAction<string>) => {
             state.lastName = action.payload
         },
-        setHeight: (state, action: PayloadAction<Number>) => {
+        setHeight: (state, action: PayloadAction<number>) => {
             state.height = action.payload
         },
         setWeight: (state, action: PayloadAction<Weight>) => {
             state.weightArray.push(action.payload)
         },
-        setGoalWeight: (state, action: PayloadAction<Number>) => {
+        setGoalWeight: (state, action: PayloadAction<number>) => {
             state.goalWeight = action.payload
         },
         setGender: (state, action: PayloadAction<string>) => {
             state.gender = action.payload
         },
-        setActivityLevel: (state, action: PayloadAction<Number>) => {
+        setActivityLevel: (state, action: PayloadAction<number>) => {
             state.activityLevel = action.payload
+        },
+        setUser: (state, action: PayloadAction<UserState>) => {
+            return action.payload
         }
     }
 })
 
-export const { setUserId, login, logout, setEmail, setPassword, setFirstName, setLastName, setHeight, setWeight, setGoalWeight, setGender, setActivityLevel } = userSlice.actions
-export const selectUser = (state: RootState) => state
+export const { 
+    setUserId,  
+    setEmail, 
+    setPassword, 
+    setFirstName, 
+    setLastName, 
+    setHeight, 
+    setWeight, 
+    setGoalWeight, 
+    setGender, 
+    setActivityLevel,
+    setUser
+ } = userSlice.actions
+export const selectUser = (state: RootState) => state.user
 export default userSlice.reducer

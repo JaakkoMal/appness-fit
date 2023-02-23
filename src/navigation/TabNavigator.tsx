@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { TabNavParamList } from '../types/types'
 import { HomeIcon, ProfileIcon } from '../constants/Icons'
 import HomeStack from './HomeStack'
-import ProfileView from '../views/ProfileView'
+import ProfileScreen from '../screens/ProfileScreen'
 
 const Tab = createBottomTabNavigator<TabNavParamList>()
 
@@ -31,7 +31,7 @@ export default function TabNavigator() {
         />
         <Tab.Screen 
           name='MyProfile' 
-          component={ProfileView}
+          component={ProfileScreen}
           options={{
             tabBarIcon: () => (
               <ProfileIcon />

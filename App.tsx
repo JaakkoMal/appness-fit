@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import { useAppSelector, useAppDispatch } from './src/app/hooks'
 
 export function App() {
-  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn)
+  const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
   const dispatch = useAppDispatch()
 
   const MyTheme = {

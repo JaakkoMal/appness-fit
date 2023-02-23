@@ -1,10 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../app/store'
-
-export interface LoginState {
-    isLoggedIn: boolean
-}
+import { LoginState } from '../types/types'
 
 const initialState: LoginState = {
     isLoggedIn: false

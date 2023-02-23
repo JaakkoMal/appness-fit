@@ -4,7 +4,7 @@ import type { RootState } from '../app/store'
 import { QuickWorkoutState, Movement, Set } from '../types/types'
 
 const initialState: QuickWorkoutState = {
-    workoutDate: '',
+    workoutDate: new Date().toLocaleDateString(),
     workout: [
       {
         movementId: 1,
@@ -102,5 +102,5 @@ export const quickWorkoutSlice = createSlice({
 })
 
 export const { addWorkoutDate, addMovementName, addReps, addWeight, addSet } = quickWorkoutSlice.actions
-export const selectQuickWorkout = (state: RootState) => state
+export const selectQuickWorkout = (state: RootState) => state.quickWorkout
 export default quickWorkoutSlice.reducer
