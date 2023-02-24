@@ -7,21 +7,25 @@ import { BarbellIcon, ClipBoardIcon, StatsIcon, HistoryIcon } from '../constants
 type Props = {
   goToQuickWorkout: () => void
   goToWorkoutHistory: () => void
+  goToEditPersonalStats: () => void
   quickWorkoutDescription: string
   chooseAWorkoutDescription: string
   newWorkoutDescription: string
   myProgressDescription: string
   workoutHistoryDescription: string
+  editPersonalStatsDescription: string
 }
 
 export default function HomeView({
   goToQuickWorkout,
   goToWorkoutHistory,
+  goToEditPersonalStats,
   quickWorkoutDescription,
   chooseAWorkoutDescription,
   newWorkoutDescription,
   myProgressDescription,
-  workoutHistoryDescription
+  workoutHistoryDescription,
+  editPersonalStatsDescription
 }: Props) {
 
   return (
@@ -30,6 +34,7 @@ export default function HomeView({
         <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
           <AppPressable title='Quick workout' description={quickWorkoutDescription} Icon={BarbellIcon} onPress={goToQuickWorkout}/>
           <AppPressable title='Workout history' description={workoutHistoryDescription} Icon={HistoryIcon} onPress={goToWorkoutHistory} />
+          <AppPressable title='Personal stats' description={editPersonalStatsDescription} Icon={ClipBoardIcon} onPress={goToEditPersonalStats} />
           {/*<AppPressable title='Choose a workout' description={chooseAWorkoutDescription} Icon={BarbellIcon} onPress={() => {}}/>
           <AppPressable title='New workout' description={newWorkoutDescription} Icon={ClipBoardIcon} onPress={() => {}}/>
           <AppPressable title='My Progress' description={myProgressDescription} Icon={StatsIcon} onPress={() => {}}/>*/}
