@@ -27,7 +27,8 @@ export default function TabNavigator() {
           options={{
             tabBarIcon: () => (
               <HomeIcon />
-            )
+            ),
+            tabBarLabel: 'Home'
           }}
         />
         <Tab.Screen 
@@ -36,7 +37,8 @@ export default function TabNavigator() {
           options={{
             tabBarIcon: () => (
               <ProfileIcon />
-            )
+            ),
+            tabBarLabel: 'Profile'
           }}
         />
     </Tab.Navigator>

@@ -54,16 +54,12 @@ export const quickWorkoutSlice = createSlice({
                 const setIndex = state.workout[movementIndex].sets.findIndex(i => i.setNumber === action.payload.setNumber)
                 if (setIndex !== -1) {
                     state.workout[movementIndex].sets[setIndex].reps = action.payload.reps
-                    console.log("Ol joo!")
-                    console.log(state)
                 } else {
                     state.workout[movementIndex].sets.push({
                         setNumber: action.payload.setNumber,
                         reps: action.payload.reps,
                         weight: 0
                     })
-                    console.log("Ei ol, ny o")
-                    console.log(state)
                 }
             }
         },
@@ -74,16 +70,12 @@ export const quickWorkoutSlice = createSlice({
                 const setIndex = state.workout[movementIndex].sets.findIndex(i => i.setNumber === action.payload.setNumber)
                 if (setIndex !== -1) {
                     state.workout[movementIndex].sets[setIndex].weight = action.payload.weight
-                    console.log("Ol joo!")
-                    console.log(state)
                 } else {
                     state.workout[movementIndex].sets.push({
                         setNumber: action.payload.setNumber,
                         reps: action.payload.weight,
                         weight: 0
                     })
-                    console.log("Ei ol, ny o")
-                    console.log(state)
                 }
             }
         },
@@ -97,10 +89,28 @@ export const quickWorkoutSlice = createSlice({
                     weight: 0
                 })
             }
+        },
+        removeSet: (state, action: PayloadAction<{movementId: number, setNumber: number}>) => {
+            const movementIndex = state.workout.findIndex(i => i.movementId === action.payload.movementId)
+
+            if (movementIndex !== -1) {
+                const setIndex = state.workout[movementIndex].sets.findIndex(i => i.setNumber === action.payload.setNumber)
+                if (setIndex !== -1) {
+                    state.workout[movementIndex].sets.splice(setIndex, 1)
+                    let count = 1
+                    state.workout[movementIndex].sets.forEach(set => {
+                        set.setNumber = count
+                        count += 1
+                    })
+                }
+            }
+        },
+        setWorkoutInitialState: (state) => {
+            return initialState
         }
     }
 })
 
-export const { addWorkoutDate, addMovementName, addReps, addWeight, addSet } = quickWorkoutSlice.actions
+export const { addWorkoutDate, addMovementName, addReps, addWeight, addSet, removeSet, setWorkoutInitialState } = quickWorkoutSlice.actions
 export const selectQuickWorkout = (state: RootState) => state.quickWorkout
 export default quickWorkoutSlice.reducer

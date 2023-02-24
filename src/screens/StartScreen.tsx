@@ -7,6 +7,7 @@ import { setUser } from '../features/userSlice'
 import { setWorkouts } from '../features/workoutsSlice'
 //Firebase
 import { getAuth, signInWithEmailAndPassword, db, doc, getDoc  } from '../../firebase/firebaseConfig'
+import { addWorkoutDoc } from '../utils/firebaseFunctions/userFunctions'
 //Types 
 import { LoginCredentials, LoginStackParamList, UserState, WorkoutsState } from '../types/types'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -82,7 +83,8 @@ export default function StartScreen({navigation}: Props) {
       const workouts: WorkoutsState = docSnap.data().workouts
       dispatch(setWorkouts(workouts))
     } else {
-      console.log('No workouts document found')
+      addWorkoutDoc(userId)
+      getWorkoutInfo(userId)
     }
   }
 
