@@ -34,5 +34,6 @@ export const homeViewStrings = {
   chooseAWorkoutDescription: 'Log a workout using a pre-defined template',
   newWorkoutDescription: 'Create a new workout template',
   myProgressDescription: 'Track your weight and workout data',
-  workoutHistoryDescription: 'View all of your workout history'
+  workoutHistoryDescription: 'View all of your workout history',
+  editPersonalStatsDescription: 'View and edit your stats'
 }

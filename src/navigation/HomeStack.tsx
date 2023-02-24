@@ -4,6 +4,7 @@ import { HomeStackParamList } from '../types/types'
 import HomeScreen from '../screens/HomeScreen'
 import QuickWorkoutScreen from '../screens/QuickWorkoutScreen'
 import WorkoutHistoryScreen from '../screens/WorkoutHistoryScreen'
+import EditPersonalStatsScreen from '../screens/EditPersonalStatsScreen'
 
 const Stack = createNativeStackNavigator<HomeStackParamList>()
 
@@ -27,6 +28,13 @@ export default function HomeStack() {
         <Stack.Screen
             name="WorkoutHistory"
             component={WorkoutHistoryScreen}
+            options={{
+                headerShown: false
+            }}
+        />
+        <Stack.Screen
+            name="EditPersonalStats"
+            component={EditPersonalStatsScreen}
             options={{
                 headerShown: false
             }}

@@ -23,6 +23,7 @@ export type HomeStackParamList = {
     Home: undefined
     QuickWorkout: undefined
     WorkoutHistory: undefined
+    EditPersonalStats: undefined
 }
 
 // RTK
