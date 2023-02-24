@@ -1,13 +1,37 @@
-import React from 'react'
-import { View, ScrollView, StyleSheet } from 'react-native'
+import React, { useState } from 'react'
+import { View, ScrollView, StyleSheet, TextInput, Button } from 'react-native'
 import MainHeading from '../components/textcomponents/MainHeading'
+import TextLabel from '../components/textcomponents/TextLabel'
+import { UserState, Weight } from '../types/types'
 
-export default function EditPersonalStatsView() {
+type Props = {
+    userStats: UserState
+    onChangeWeight: (weight: string) => void
+}
+
+export default function EditPersonalStatsView({ userStats, onChangeWeight }: Props) {
+
+  const [weightInput, setWeightInput] = useState<string>('')
+
+  const onChangeWeightInput = (input: string) => {
+    setWeightInput(input)
+  }
+
   return (
     <View style={styles.container}>
       <MainHeading text="Edit stats" fontSize={24} />
         <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
-          
+          {userStats.weightArray.map((weight, i) => (
+            <TextLabel key={i} text={weight.weight.toString() + ' / ' + weight.weightedOnDate} />
+          ))}
+          <TextInput 
+            style={styles.input}
+            value={weightInput}
+            keyboardType='numeric'
+            placeholder='edit weight'
+            onChangeText={onChangeWeightInput}
+          />
+          <Button title='submit' onPress={() => onChangeWeight(weightInput)} />
         </ScrollView>
     </View>
   )
@@ -26,5 +50,16 @@ const styles = StyleSheet.create({
       flex: 1,
       marginTop: 40,
       width: '100%',
+    },
+    input: {
+        backgroundColor: 'rgba(99, 87, 87, 0.5)',
+        height: 40,
+        margin: 16,
+        padding: 10,
+        minWidth: 150,
+        borderColor: '#c0eb6a',
+        borderWidth: 1,
+        fontSize: 16,
+        color: '#fff'
     },
 })
