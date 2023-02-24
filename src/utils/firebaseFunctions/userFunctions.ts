@@ -31,7 +31,7 @@ const addUserInfo = async (user: UserState, uid: string) => {
     })
 }
 
-const addWorkoutDoc = async (uid: string) => {
+export const addWorkoutDoc = async (uid: string) => {
     await setDoc(doc(db, 'Workouts', uid), {
         workouts: []
     })

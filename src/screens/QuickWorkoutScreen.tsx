@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { db, setDoc, doc, updateDoc, arrayUnion } from '../../firebase/firebaseConfig'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { addWorkout } from '../features/workoutsSlice'
+import { setWorkoutInitialState } from '../features/quickWorkoutSlice'
 import QuickWorkoutView from '../views/QuickWorkoutView'
 import { InputField, QuickWorkoutState } from '../types/types'
+import { HomeStackParamList } from '../types/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+type Props = NativeStackScreenProps<HomeStackParamList, 'QuickWorkout'>
 
 
-export default function QuickWorkoutScreen() {
+export default function QuickWorkoutScreen({navigation}: Props) {
 
   const dispatch = useAppDispatch()
   const quickWorkout = useAppSelector((state) => state.quickWorkout)
@@ -23,15 +27,19 @@ export default function QuickWorkoutScreen() {
   const saveWorkout = () => {
     dispatch(addWorkout(quickWorkout))
     addWorkoutToFirebase(quickWorkout, userId)
+    dispatch(setWorkoutInitialState())
+    goToHomeView()
   }
 
   const addWorkoutToFirebase = async (workout: QuickWorkoutState, userId: string) => {
     const workoutsRef = doc(db, "Workouts", userId);
-
-    // Atomically add a new region to the "regions" array field.
     await updateDoc(workoutsRef, {
       workouts: arrayUnion(workout)
-});
+    });
+  }
+
+  const goToHomeView = () => {
+    navigation.navigate('Home')
   }
 
   return (
