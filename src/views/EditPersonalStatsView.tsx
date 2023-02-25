@@ -20,8 +20,9 @@ export default function EditPersonalStatsView({ userStats, onChangeWeight }: Pro
 
   return (
     <View style={styles.container}>
-      <MainHeading text="Edit stats" fontSize={24} />
+      <MainHeading text="Personal stats" fontSize={24} />
         <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
+          <View style={styles.container}>
           <WeightChart data={userStats.weightArray}/>
           <TextInput 
             style={styles.input}
@@ -33,6 +34,7 @@ export default function EditPersonalStatsView({ userStats, onChangeWeight }: Pro
             onChangeText={onChangeWeightInput}
           />
           <CustomButton text='update' onPress={() => onChangeWeight(weightInput)}/>
+          </View>
         </ScrollView>
     </View>
   )

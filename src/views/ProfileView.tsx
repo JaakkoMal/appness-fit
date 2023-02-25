@@ -21,21 +21,9 @@ export default function ProfileView({ user, workouts }: Props) {
       <Text>{user.firstName}</Text>
       <Text>{user.lastName}</Text>
       <Text>{user.height}</Text>
-      {user.weightArray.map(weightObject => (
-        <Text key={weightObject.weightedOnDate}>{weightObject.weightedOnDate}</Text>
-      ))}
-      <Text>{user.goalWeight}</Text>
+      <Text>{user.weightArray[user.weightArray.length -1].weight}</Text>
       <Text>{user.gender}</Text>
       <Text>{user.activityLevel}</Text>
-      <Text>WORKOUTS</Text>
-      {workouts.map((workout, i) => (
-        <View key={i}>
-          <Text>{workout.workoutDate}</Text>
-          {workout.workout.map((movement, i) => (
-            <Text key={i}>{movement.name}</Text>
-          ))}
-        </View>
-      ))}
     </View>
   )
 }
