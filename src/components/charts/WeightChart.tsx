@@ -36,7 +36,7 @@ export default function WeightChart({ data }: Props) {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
         <TextLabel text='Weight progress' fontSize={20} />
         <LineChart
             data={{
@@ -51,7 +51,7 @@ export default function WeightChart({ data }: Props) {
             height={220}
             chartConfig={chartConfig}
             style={{
-            marginVertical: 8,
+            margin: 0,
             }}
             onDataPointClick={({index}) => showModal(index)}
         />
@@ -68,6 +68,14 @@ export default function WeightChart({ data }: Props) {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+})
 
 
 
