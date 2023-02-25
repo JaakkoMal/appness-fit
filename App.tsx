@@ -1,7 +1,8 @@
+import 'react-native-gesture-handler'
 import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import LoginNavigator from './src/navigation/LoginNavigator'
-import MainNavigator from './src/navigation/TabNavigator'
+import MainNavigator from './src/navigation/DrawerNavigator'
 
 // RTK
 import { store } from './src/app/store'
@@ -21,7 +22,6 @@ export function App() {
   }
   
   return (
-    <Provider store={store}>
       <NavigationContainer theme={MyTheme}>
         {!isLoggedIn ? 
         <LoginNavigator /> 
@@ -34,7 +34,6 @@ export function App() {
         </SafeAreaView>
         }
       </NavigationContainer>
-    </Provider>
   );
 }
 
