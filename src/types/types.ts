@@ -14,7 +14,7 @@ export type LoginStackParamList = {
     SignUp: undefined
 }
 
-export type TabNavParamList = {
+export type DrawerNavParamList = {
     HomeStack: undefined
     MyProfile: undefined
 }
