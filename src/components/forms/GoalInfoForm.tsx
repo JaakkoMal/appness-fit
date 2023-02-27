@@ -1,19 +1,19 @@
 import React from 'react'
-import { View, TextInput, StyleSheet, ScrollView } from 'react-native'
+import { View, TextInput, StyleSheet } from 'react-native'
 import CustomButton from '../buttons/CustomButton'
 import Dropdown from '../dropdown/Dropdown'
 import { genderOptions, activityLevelOptions } from '../../constants/constants'
 import { UserState } from '../../types/types'
 
 type Props = {
-    switchPage: () => void
-    onSubmit: (user: UserState) => void
-    user: UserState
-    onChangeHeight: (height: string) => void
-    onChangeWeight: (weight: string) => void
-    onChangeGoalWeight: (goalWeight: string) => void
-    onChangeGender: (gender: string) => void
-    onChangeActivityLevel: (activityLevel: string) => void
+  switchPage: () => void
+  onSubmit: (user: UserState) => void
+  user: UserState
+  onChangeHeight: (height: string) => void
+  onChangeWeight: (weight: string) => void
+  onChangeGoalWeight: (goalWeight: string) => void
+  onChangeGender: (gender: string) => void
+  onChangeActivityLevel: (activityLevel: string) => void
 }
 
 export default function GoalInfoForm({
@@ -61,22 +61,22 @@ return (
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      width: '100%',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 40,
-      padding: 20
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
+    padding: 20
   },
   input: {
-      backgroundColor: 'rgba(99, 87, 87, 0.5)',
-      height: 40,
-      width: '100%',
-      margin: 16,
-      padding: 10,
-      borderColor: '#c0eb6a',
-      borderWidth: 1,
-      fontSize: 16,
-      color: '#fff'
+    backgroundColor: 'rgba(99, 87, 87, 0.5)',
+    height: 40,
+    width: '100%',
+    margin: 16,
+    padding: 10,
+    borderColor: '#c0eb6a',
+    borderWidth: 1,
+    fontSize: 16,
+    color: '#fff'
   }
 })

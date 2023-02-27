@@ -36,14 +36,3 @@ export const addWorkoutDoc = async (uid: string) => {
         workouts: []
     })
 }
-
-/*const getUserInfo = async (userId: string) => {
-    const userDocRef = doc(db, 'User', userId)
-    const docSnap = await getDoc(userDocRef)
-
-    if (docSnap.exists()) {
-        console.log('HERE HERE: ', docSnap.data())
-    } else {
-        console.log('No such document')
-    }
-}*/

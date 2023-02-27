@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { UserState, WorkoutsState } from '../types/types'
 
@@ -8,11 +8,6 @@ type Props = {
 }
 
 export default function ProfileView({ user, workouts }: Props) {
-
-  useEffect(() => {
-    console.log(workouts)
-  }, [])
-
   return (
     <View style={styles.container}>
       <Text>{user.userId}</Text>
@@ -30,12 +25,12 @@ export default function ProfileView({ user, workouts }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingLeft: 20,
-      paddingRight: 20,
-      backgroundColor: '#484d4b'
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    backgroundColor: '#484d4b'
   },
   contentContainer: {
     flex: 1,

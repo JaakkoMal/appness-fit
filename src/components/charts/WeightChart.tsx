@@ -6,19 +6,19 @@ import TextLabel from '../textcomponents/TextLabel'
 import ChartDataModal from '../modals/ChartDataModal'
 
 const chartConfig = {
-    backgroundColor: '#484d4b',
-    decimalPlaces: 1, 
-    color: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
-    labelColor: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
-    propsForDots: {
-      r: "3",
-      strokeWidth: "2",
-      stroke: "#c0eb6a"
-    }
+  backgroundColor: '#484d4b',
+  decimalPlaces: 1, 
+  color: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
+  labelColor: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
+  propsForDots: {
+    r: "3",
+    strokeWidth: "2",
+    stroke: "#c0eb6a"
+  }
 }
 
 type Props = {
-    data: Weight[]
+  data: Weight[]
 }
 
 export default function WeightChart({ data }: Props) {
@@ -37,33 +37,29 @@ export default function WeightChart({ data }: Props) {
 
   return (
     <View style={styles.container}>
-        <TextLabel text='Weight progress' fontSize={20} />
+      <TextLabel text='Weight progress' fontSize={20} />
         <LineChart
-            data={{
+          data={{
             labels: data.map(weight => ''),
-            datasets: [
-                {
-                data: data.map(weight => weight.weight)
-                }
-            ]
-            }}
-            width={Dimensions.get("screen").width}
-            height={220}
-            chartConfig={chartConfig}
-            style={{
+            datasets: [{ data: data.map(weight => weight.weight) }]
+          }}
+          width={Dimensions.get("screen").width}
+          height={220}
+          chartConfig={chartConfig}
+          style={{
             margin: 0,
-            }}
-            onDataPointClick={({index}) => showModal(index)}
+          }}
+          onDataPointClick={({index}) => showModal(index)}
         />
         <Modal
         visible={modalVisible}
         onRequestClose={closeModal}
         transparent={true}
         >
-            <ChartDataModal 
+          <ChartDataModal 
             data={modalData}
             closeModal={closeModal}
-            />
+          />
         </Modal>
     </View>
   )

@@ -4,12 +4,12 @@ import CustomButton from '../buttons/CustomButton'
 import { UserState } from '../../types/types'
 
 type Props = {
-    switchPage: () => void
-    user: UserState
-    onChangeEmail: (email: string) => void
-    onChangePassword: (password: string) => void
-    onChangeFirstName: (firstName: string) => void
-    onChangeLastName: (lastName: string) => void
+  switchPage: () => void
+  user: UserState
+  onChangeEmail: (email: string) => void
+  onChangePassword: (password: string) => void
+  onChangeFirstName: (firstName: string) => void
+  onChangeLastName: (lastName: string) => void
 }
 export default function UserInfoForm({
   switchPage,
@@ -65,23 +65,23 @@ export default function UserInfoForm({
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 40,
-        padding: 20
-    },
-    input: {
-        backgroundColor: 'rgba(99, 87, 87, 0.5)',
-        height: 40,
-        width: '100%',
-        margin: 16,
-        padding: 10,
-        borderColor: '#c0eb6a',
-        borderWidth: 1,
-        fontSize: 16,
-        color: '#fff'
-    }
+  container: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
+    padding: 20
+  },
+  input: {
+    backgroundColor: 'rgba(99, 87, 87, 0.5)',
+    height: 40,
+    width: '100%',
+    margin: 16,
+    padding: 10,
+    borderColor: '#c0eb6a',
+    borderWidth: 1,
+    fontSize: 16,
+    color: '#fff'
+  }
 })

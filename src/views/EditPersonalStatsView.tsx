@@ -6,8 +6,8 @@ import { UserState, Weight } from '../types/types'
 import CustomButton from '../components/buttons/CustomButton'
 
 type Props = {
-    userStats: UserState
-    onChangeWeight: (weight: string) => void
+  userStats: UserState
+  onChangeWeight: (weight: string) => void
 }
 
 export default function EditPersonalStatsView({ userStats, onChangeWeight }: Props) {
@@ -41,28 +41,28 @@ export default function EditPersonalStatsView({ userStats, onChangeWeight }: Pro
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingLeft: 20,
-      paddingRight: 20,
-      backgroundColor: '#484d4b'
-    },
-    contentContainer: {
-      flex: 1,
-      marginTop: 40,
-      width: '100%',
-    },
-    input: {
-        backgroundColor: 'rgba(99, 87, 87, 0.5)',
-        height: 40,
-        margin: 16,
-        padding: 10,
-        minWidth: 80,
-        borderColor: '#c0eb6a',
-        borderWidth: 1,
-        fontSize: 16,
-        color: '#fff'
-    },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    backgroundColor: '#484d4b'
+  },
+  contentContainer: {
+    flex: 1,
+    marginTop: 40,
+    width: '100%',
+  },
+  input: {
+      backgroundColor: 'rgba(99, 87, 87, 0.5)',
+      height: 40,
+      margin: 16,
+      padding: 10,
+      minWidth: 80,
+      borderColor: '#c0eb6a',
+      borderWidth: 1,
+      fontSize: 16,
+      color: '#fff'
+  },
 })

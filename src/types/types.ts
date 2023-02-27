@@ -4,71 +4,67 @@ export type LoginCredentials = {
 }
 
 export type InputField = {
-    id: number
+  id: number
 }
 
 // NAV
 
 export type LoginStackParamList = {
-    Start: undefined
-    SignUp: undefined
+  Start: undefined
+  SignUp: undefined
 }
 
 export type DrawerNavParamList = {
-    HomeStack: undefined
-    MyProfile: undefined
+  HomeStack: undefined
+  MyProfile: undefined
 }
 
 export type HomeStackParamList = {
-    Home: undefined
-    QuickWorkout: undefined
-    WorkoutHistory: undefined
-    EditPersonalStats: undefined
+  Home: undefined
+  QuickWorkout: undefined
+  WorkoutHistory: undefined
+  EditPersonalStats: undefined
 }
 
 // RTK
 
 export interface LoginState {
-    isLoggedIn: boolean
+  isLoggedIn: boolean
 }
 
 export interface Weight {
-    weight: number,
-    weightedOnDate: string
+  weight: number,
+  weightedOnDate: string
 }
 
 export interface UserState {
-    userId: string 
-    email: string
-    password: string
-    firstName: string
-    lastName: string
-    height: number | null
-    weightArray: Weight[]
-    goalWeight: number | null
-    gender: string
-    activityLevel: number | null
+  userId: string 
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  height: number | null
+  weightArray: Weight[]
+  goalWeight: number | null
+  gender: string
+  activityLevel: number | null
 }
 
 export interface Set {
-    setNumber: number,
-    reps: number,
-    weight: number
+  setNumber: number,
+  reps: number,
+  weight: number
 }
 
 export interface Movement {
-    movementId: number
-    name: string
-    sets: Set[]
+  movementId: number
+  name: string
+  sets: Set[]
 }
 
 export type QuickWorkoutState = {
-    workoutDate: string,
-    workout: Movement[]
+  workoutDate: string,
+  workout: Movement[]
 }
-
-/*export interface WorkoutsState {
-    workouts: QuickWorkoutState[]
-}*/
 
 export type WorkoutsState = QuickWorkoutState[]

@@ -29,12 +29,10 @@ export default function StartScreen({navigation}: Props) {
 
   const onChangeEmail = (email: string) => {
     setLoginCredentials({...loginCredentials, email: email})
-    console.log(email)
   }
 
   const onChangePassword = (password: string) => {
     setLoginCredentials({...loginCredentials, password: password})
-    console.log(password)
   }
 
   const signIn = async() => {
@@ -56,23 +54,22 @@ export default function StartScreen({navigation}: Props) {
     const docSnap = await getDoc(userDocRef)
 
     if (docSnap.exists()) {
-        const user: UserState = {
-          userId: docSnap.data().userId, 
-          email: docSnap.data().email,
-          password: docSnap.data().password,
-          firstName: docSnap.data().firstName,
-          lastName: docSnap.data().lastName,
-          height: docSnap.data().height,
-          weightArray: docSnap.data().weightArray,
-          goalWeight: docSnap.data().goalWeight,
-          gender: docSnap.data().gender,
-          activityLevel: docSnap.data().activityLevel
-        }
-        dispatch(setUser(user))
-        console.log("SNAP: ", docSnap.data().weightArray)
+      const user: UserState = {
+        userId: docSnap.data().userId, 
+        email: docSnap.data().email,
+        password: docSnap.data().password,
+        firstName: docSnap.data().firstName,
+        lastName: docSnap.data().lastName,
+        height: docSnap.data().height,
+        weightArray: docSnap.data().weightArray,
+        goalWeight: docSnap.data().goalWeight,
+        gender: docSnap.data().gender,
+        activityLevel: docSnap.data().activityLevel
+      }
+      dispatch(setUser(user))
     } else {
-        console.log('No such document')
-    }
+        alert('Error retrieving user info.')
+      }
   }
 
   const getWorkoutInfo = async (userId: string) => {

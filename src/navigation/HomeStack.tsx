@@ -21,50 +21,50 @@ export default function HomeStack({navigation}: Props) {
 
   return (
     <Stack.Navigator>
-        <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{
-                headerTransparent: true,
-                headerTitle: '',
-                headerLeft: () => (
-                    <AntDesign name="menuunfold" size={24} color='#c0eb6a' onPress={() => navigation.toggleDrawer()} />
-                )
-            }}
-        />
-        <Stack.Screen
-            name="QuickWorkout"
-            component={QuickWorkoutScreen}
-            options={{
-                headerTransparent: true,
-                headerTitle: '',
-                headerLeft: () => (
-                    <AntDesign name="left" size={24} color='#c0eb6a' onPress={() => navigation.goBack()}/>
-                )
-            }}
-        />
-        <Stack.Screen
-            name="WorkoutHistory"
-            component={WorkoutHistoryScreen}
-            options={{
-                headerTransparent: true,
-                headerTitle: '',
-                headerLeft: () => (
-                    <AntDesign name="left" size={24} color='#c0eb6a' onPress={() => navigation.goBack()}/>
-                )
-            }}
-        />
-        <Stack.Screen
-            name="EditPersonalStats"
-            component={EditPersonalStatsScreen}
-            options={{
-                headerTransparent: true,
-                headerTitle: '',
-                headerLeft: () => (
-                    <AntDesign name="left" size={24} color='#c0eb6a' onPress={() => navigation.goBack()}/>
-                )
-            }}
-        />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerTransparent: true,
+          headerTitle: '',
+          headerLeft: () => (
+            <AntDesign name="menuunfold" size={24} color='#c0eb6a' onPress={() => navigation.toggleDrawer()} />
+          )
+        }}
+      />
+      <Stack.Screen
+        name="QuickWorkout"
+        component={QuickWorkoutScreen}
+        options={{
+          headerTransparent: true,
+          headerTitle: '',
+          headerLeft: () => (
+            <AntDesign name="left" size={24} color='#c0eb6a' onPress={() => navigation.goBack()}/>
+          )
+        }}
+      />
+      <Stack.Screen
+        name="WorkoutHistory"
+        component={WorkoutHistoryScreen}
+        options={{
+          headerTransparent: true,
+          headerTitle: '',
+          headerLeft: () => (
+            <AntDesign name="left" size={24} color='#c0eb6a' onPress={() => navigation.goBack()}/>
+          )
+        }}
+      />
+      <Stack.Screen
+        name="EditPersonalStats"
+        component={EditPersonalStatsScreen}
+        options={{
+          headerTransparent: true,
+          headerTitle: '',
+          headerLeft: () => (
+            <AntDesign name="left" size={24} color='#c0eb6a' onPress={() => navigation.goBack()}/>
+          )
+        }}
+      />
     </Stack.Navigator>
   )
 }
