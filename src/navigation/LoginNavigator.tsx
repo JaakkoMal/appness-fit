@@ -14,25 +14,25 @@ export default function HomeStack() {
 
   return (
     <Stack.Navigator>
-        <Stack.Screen
-            name="Start"
-            component={StartScreen}
-            options={{
-                headerTransparent: true,
-                headerTitle: ''
-            }}
-        />
-        <Stack.Screen 
-            name="SignUp"
-            component={SignUpScreen}
-            options={{
-                headerTransparent: true,
-                headerTitle: '',
-                headerLeft: () => (
-                    <AntDesign name="left" size={24} color='#c0eb6a' onPress={() => navigation.goBack()}/>
-                )
-            }}
-        />
+      <Stack.Screen
+        name="Start"
+        component={StartScreen}
+        options={{
+          headerTransparent: true,
+          headerTitle: ''
+        }}
+      />
+      <Stack.Screen 
+        name="SignUp"
+        component={SignUpScreen}
+        options={{
+          headerTransparent: true,
+          headerTitle: '',
+          headerLeft: () => (
+            <AntDesign name="left" size={24} color='#c0eb6a' onPress={() => navigation.goBack()}/>
+          )
+        }}
+      />
     </Stack.Navigator>
   )
 }

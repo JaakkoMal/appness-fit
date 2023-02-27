@@ -35,27 +35,24 @@ export default function HomeView({
           <AppPressable title='Quick workout' description={quickWorkoutDescription} Icon={BarbellIcon} onPress={goToQuickWorkout}/>
           <AppPressable title='Workout history' description={workoutHistoryDescription} Icon={HistoryIcon} onPress={goToWorkoutHistory} />
           <AppPressable title='Personal stats' description={editPersonalStatsDescription} Icon={ClipBoardIcon} onPress={goToEditPersonalStats} />
-          {/*<AppPressable title='Choose a workout' description={chooseAWorkoutDescription} Icon={BarbellIcon} onPress={() => {}}/>
-          <AppPressable title='New workout' description={newWorkoutDescription} Icon={ClipBoardIcon} onPress={() => {}}/>
-          <AppPressable title='My Progress' description={myProgressDescription} Icon={StatsIcon} onPress={() => {}}/>*/}
         </ScrollView>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingLeft: 20,
-        paddingRight: 20,
-        backgroundColor: '#484d4b'
-    },
-    contentContainer: {
-      flex: 1,
-      marginTop: 40,
-      width: '100%',
-    }
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    backgroundColor: '#484d4b'
+  },
+  contentContainer: {
+    flex: 1,
+    marginTop: 40,
+    width: '100%',
+  }
 })
 

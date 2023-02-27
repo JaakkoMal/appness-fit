@@ -4,10 +4,10 @@ import TextLabel from '../textcomponents/TextLabel'
 
 
 type Props = {
-    title: string
-    description: string
-    Icon: () => JSX.Element
-    onPress: () => void
+  title: string
+  description: string
+  Icon: () => JSX.Element
+  onPress: () => void
 }
 
 export default function AppPressable({title, description, Icon, onPress}: Props) {
@@ -17,7 +17,7 @@ export default function AppPressable({title, description, Icon, onPress}: Props)
         pressed ? styles.pressed : styles.container
       ]}
       onPress={onPress}
-      >
+    >
       <TextLabel text={title} fontSize={24}/>
       <TextLabel text={description} fontSize={16} />
       <View style={{height: 12}}/>
@@ -27,25 +27,25 @@ export default function AppPressable({title, description, Icon, onPress}: Props)
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 12,
-        paddingBottom: 0,
-        backgroundColor: '#555c59',
-        marginBottom: 12,
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
+  container: {
+    flex: 1,
+    padding: 12,
+    paddingBottom: 0,
+    backgroundColor: '#555c59',
+    marginBottom: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    pressed: {
-        flex: 1,
-        padding: 12,
-        paddingBottom: 0,
-        backgroundColor: '#606965',
-        marginBottom: 12,
-    }
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  pressed: {
+    flex: 1,
+    padding: 12,
+    paddingBottom: 0,
+    backgroundColor: '#606965',
+    marginBottom: 12,
+  }
 })

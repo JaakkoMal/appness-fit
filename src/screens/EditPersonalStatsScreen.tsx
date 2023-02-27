@@ -22,7 +22,7 @@ export default function EditPersonalStatsScreen() {
   const addWeightToFirebase = async (weight: Weight, userId: string) => {
     const userRef = doc(db, 'User', userId)
     await updateDoc(userRef, {
-        weightArray: arrayUnion(weight)
+      weightArray: arrayUnion(weight)
     })
   }
 

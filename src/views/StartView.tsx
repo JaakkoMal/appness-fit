@@ -57,20 +57,20 @@ export default function StartView({
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    image: {
-        flex: 1,
-        paddingTop: Constants.statusBarHeight + 40,
-        alignItems: 'center',
-    },
-    buttonContainer: {
-        flex: 3,
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-around',
-        width: '100%',
-        paddingTop: 30
-    }
+  container: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight + 40,
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    flex: 3,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around',
+    width: '100%',
+    paddingTop: 30
+  }
 })
