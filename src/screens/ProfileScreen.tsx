@@ -1,6 +1,6 @@
 import React from 'react'
 import ProfileView from '../views/ProfileView'
-import { useAppSelector } from '../app/hooks'
+import { useAppSelector } from '../redux/hooks'
 
 export default function ProfileScreen() {
 

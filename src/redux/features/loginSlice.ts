@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from '../app/store'
-import { LoginState } from '../types/types'
+import type { RootState } from '../store'
+import { LoginState } from '../../types/types'
 
 const initialState: LoginState = {
   isLoggedIn: false

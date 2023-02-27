@@ -1,8 +1,8 @@
 import React from 'react'
 import EditPersonalStatsView from '../views/EditPersonalStatsView'
 import { db, setDoc, doc, updateDoc, arrayUnion } from '../../firebase/firebaseConfig'
-import { useAppSelector, useAppDispatch } from '../app/hooks'
-import { setWeight } from '../features/userSlice'
+import { useAppSelector, useAppDispatch } from '../redux/hooks'
+import { setWeight } from '../redux/features/userSlice'
 import { Weight } from '../types/types'
 
 export default function EditPersonalStatsScreen() {
@@ -11,8 +11,9 @@ export default function EditPersonalStatsScreen() {
   const dispatch = useAppDispatch()
 
   const onChangeWeight = (weight: string) => {
+    const weightWithCorrectDecimalPoint = weight.replace(',', '.')
     const weightObject: Weight = {
-      weight: Number(weight),
+      weight: Number(weightWithCorrectDecimalPoint),
       weightedOnDate: new Date().toLocaleDateString()
     }
     dispatch(setWeight(weightObject))

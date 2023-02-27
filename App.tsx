@@ -5,9 +5,9 @@ import LoginNavigator from './src/navigation/LoginNavigator'
 import MainNavigator from './src/navigation/DrawerNavigator'
 
 // RTK
-import { store } from './src/app/store'
+import { store } from './src/redux/store'
 import { Provider } from 'react-redux'
-import { useAppSelector, useAppDispatch } from './src/app/hooks'
+import { useAppSelector, useAppDispatch } from './src/redux/hooks'
 
 export function App() {
   const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
