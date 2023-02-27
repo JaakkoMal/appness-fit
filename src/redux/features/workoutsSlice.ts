@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../app/store'
-import { WorkoutsState, QuickWorkoutState } from '../types/types'
+import type { RootState } from '../store'
+import { WorkoutsState, QuickWorkoutState } from '../../types/types'
 
 const initialState: WorkoutsState = []
 

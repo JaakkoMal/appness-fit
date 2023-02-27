@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import StartView from '../views/StartView'
 //RTK
-import { useAppDispatch } from '../app/hooks'
-import { login } from '../features/loginSlice'
-import { setUser } from '../features/userSlice'
-import { setWorkouts } from '../features/workoutsSlice'
+import { useAppDispatch } from '../redux/hooks'
+import { login } from '../redux/features/loginSlice'
+import { setUser } from '../redux/features/userSlice'
+import { setWorkouts } from '../redux/features/workoutsSlice'
 //Firebase
 import { getAuth, signInWithEmailAndPassword, db, doc, getDoc  } from '../../firebase/firebaseConfig'
 import { addWorkoutDoc } from '../utils/firebaseFunctions/userFunctions'

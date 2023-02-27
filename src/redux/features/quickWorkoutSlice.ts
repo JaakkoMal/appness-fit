@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../app/store'
-import { QuickWorkoutState } from '../types/types'
+import type { RootState } from '../store'
+import { QuickWorkoutState } from '../../types/types'
 
 const initialState: QuickWorkoutState = {
   workoutDate: new Date().toLocaleDateString(),

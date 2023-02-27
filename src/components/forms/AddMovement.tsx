@@ -4,8 +4,8 @@ import CustomButton from '../buttons/CustomButton'
 import { InputField } from '../../types/types'
 
 // RTK
-import { useAppDispatch } from '../../app/hooks'
-import { addMovementName, addReps, addWeight, addSet, removeSet } from '../../features/quickWorkoutSlice'
+import { useAppDispatch } from '../../redux/hooks'
+import { addMovementName, addReps, addWeight, addSet, removeSet } from '../../redux/features/quickWorkoutSlice'
 
 type Props = {
   id: number
@@ -60,7 +60,7 @@ export default function AddMovement({id}: Props) {
               <TextInput 
                 style={styles.smallInput}
                 textAlign='center'
-                keyboardType='numeric'
+                keyboardType='number-pad'
                 placeholder='reps'
                 placeholderTextColor='rgba(232, 246, 222, 0.8)'
                 onChangeText={text => dispatch(addReps({movementId: id, setNumber: field.id, reps: Number(text)}))}
@@ -71,7 +71,7 @@ export default function AddMovement({id}: Props) {
                 keyboardType='numeric'
                 placeholder='weight'
                 placeholderTextColor='rgba(232, 246, 222, 0.8)'
-                onChangeText={text => dispatch(addWeight({movementId: id, setNumber: field.id, weight: Number(text)}))}
+                onChangeText={text => dispatch(addWeight({movementId: id, setNumber: field.id, weight: Number(text.replace(',','.'))}))}
               />
               </View>
               {

@@ -3,7 +3,7 @@ import { createUser } from '../utils/firebaseFunctions/userFunctions'
 import SignUpView from '../views/SignUpView'
 
 // RTK
-import { useAppSelector, useAppDispatch } from '../app/hooks'
+import { useAppSelector, useAppDispatch } from '../redux/hooks'
 
 import { Weight } from '../types/types'
 import { 
@@ -16,7 +16,7 @@ import {
   setGoalWeight, 
   setGender, 
   setActivityLevel 
-} from '../features/userSlice'
+} from '../redux/features/userSlice'
 
 export default function SignUpScreen() {
 
@@ -45,19 +45,22 @@ export default function SignUpScreen() {
   }
 
   const onChangeHeight = (height: string) => {
-    dispatch(setHeight(Number(height)))
+    const heightWithCorrectDecimalPoint = height.replace(',', '.')
+    dispatch(setHeight(Number(heightWithCorrectDecimalPoint)))
   }
 
   const onChangeWeight = (weight: string) => {
+    const weightWithCorrectDecimalPoint = weight.replace(',', '.')
     const weightObject: Weight = {
-      weight: Number(weight),
+      weight: Number(weightWithCorrectDecimalPoint),
       weightedOnDate: new Date().toLocaleDateString()
     }
     dispatch(setWeight(weightObject))
   }
 
   const onChangeGoalWeight = (goalWeight: string) => {
-    dispatch(setGoalWeight(Number(goalWeight)))
+    const goalWeightWithCorrectDecimalPoint = goalWeight.replace(',', '.')
+    dispatch(setGoalWeight(Number(goalWeightWithCorrectDecimalPoint)))
   }
 
   const onChangeGender = (gender: string) => {
