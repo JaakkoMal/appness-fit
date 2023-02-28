@@ -5,7 +5,7 @@ import WorkoutCard from '../components/cards/WorkoutCard'
 import MainHeading from '../components/textcomponents/MainHeading'
 
 type Props = {
-    workoutsDoc: WorkoutsState
+  workoutsDoc: WorkoutsState
 }
 
 export default function WorkoutHistoryView({ workoutsDoc }: Props) {

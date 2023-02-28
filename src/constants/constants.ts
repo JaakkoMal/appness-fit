@@ -28,6 +28,18 @@ export const activityLevelOptions = [
   }
 ]
 
+export const chartConfig = {
+  backgroundColor: '#484d4b',
+  decimalPlaces: 1, 
+  color: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
+  labelColor: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
+  propsForDots: {
+    r: "3",
+    strokeWidth: "2",
+    stroke: "#c0eb6a"
+  }
+}
+
 // Text constants
 export const homeViewStrings = {
   quickWorkoutDescription: 'Log a workout without choosing a pre-defined program',

@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { Pressable, StyleSheet } from 'react-native'
 import TextLabel from '../textcomponents/TextLabel'
 import React from 'react'
 
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     borderColor: '#c0eb6a',
     backgroundColor: 'rgba(99, 87, 87, 0.0)',
     boderWidth: 1,
+    marginBottom: 16,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 20,

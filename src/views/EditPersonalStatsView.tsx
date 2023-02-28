@@ -55,14 +55,14 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   input: {
-      backgroundColor: 'rgba(99, 87, 87, 0.5)',
-      height: 40,
-      margin: 16,
-      padding: 10,
-      minWidth: 80,
-      borderColor: '#c0eb6a',
-      borderWidth: 1,
-      fontSize: 16,
-      color: '#fff'
+    backgroundColor: 'rgba(99, 87, 87, 0.5)',
+    height: 40,
+    margin: 16,
+    padding: 10,
+    minWidth: 80,
+    borderColor: '#c0eb6a',
+    borderWidth: 1,
+    fontSize: 16,
+    color: '#fff'
   },
 })

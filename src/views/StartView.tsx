@@ -16,7 +16,6 @@ type Props = {
   onChangePassword: (password: string) => void
   signIn: () => void
   goToSignUpView: () => void
-  
 }
 
 export default function StartView({

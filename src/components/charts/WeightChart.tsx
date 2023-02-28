@@ -1,21 +1,10 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, Dimensions, Modal } from 'react-native'
 import { LineChart } from 'react-native-chart-kit'
+import { chartConfig } from '../../constants/constants'
 import { Weight } from '../../types/types'
 import TextLabel from '../textcomponents/TextLabel'
 import ChartDataModal from '../modals/ChartDataModal'
-
-const chartConfig = {
-  backgroundColor: '#484d4b',
-  decimalPlaces: 1, 
-  color: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
-  labelColor: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
-  propsForDots: {
-    r: "3",
-    strokeWidth: "2",
-    stroke: "#c0eb6a"
-  }
-}
 
 type Props = {
   data: Weight[]
@@ -37,7 +26,7 @@ export default function WeightChart({ data }: Props) {
 
   return (
     <View style={styles.container}>
-      <TextLabel text='Weight progress' fontSize={20} />
+      <TextLabel text='Weight chart' fontSize={20} />
         <LineChart
           data={{
             labels: data.map(weight => ''),
@@ -46,9 +35,6 @@ export default function WeightChart({ data }: Props) {
           width={Dimensions.get("screen").width}
           height={220}
           chartConfig={chartConfig}
-          style={{
-            margin: 0,
-          }}
           onDataPointClick={({index}) => showModal(index)}
         />
         <Modal

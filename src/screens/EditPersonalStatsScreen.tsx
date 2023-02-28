@@ -1,6 +1,6 @@
 import React from 'react'
 import EditPersonalStatsView from '../views/EditPersonalStatsView'
-import { db, setDoc, doc, updateDoc, arrayUnion } from '../../firebase/firebaseConfig'
+import { db, doc, updateDoc, arrayUnion } from '../../firebase/firebaseConfig'
 import { useAppSelector, useAppDispatch } from '../redux/hooks'
 import { setWeight } from '../redux/features/userSlice'
 import { Weight } from '../types/types'

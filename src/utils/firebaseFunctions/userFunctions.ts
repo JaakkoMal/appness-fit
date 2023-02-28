@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from '../../../firebase/firebaseConfig'
-import { db, doc, getDoc, setDoc } from '../../../firebase/firebaseConfig'
+import { db, doc, setDoc } from '../../../firebase/firebaseConfig'
 import { UserState } from '../../types/types'
 
 export const createUser = (user: UserState) => {
