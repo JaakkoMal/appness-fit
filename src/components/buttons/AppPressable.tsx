@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Pressable, StyleSheet } from 'react-native'
 import TextLabel from '../textcomponents/TextLabel'
 
-
 type Props = {
   title: string
   description: string

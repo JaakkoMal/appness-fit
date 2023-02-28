@@ -2,31 +2,26 @@ import React from 'react'
 import { View, ScrollView, StyleSheet } from 'react-native'
 import MainHeading from '../components/textcomponents/MainHeading'
 import AppPressable from '../components/buttons/AppPressable'
+import { homeViewStrings } from '../constants/constants'
 import { BarbellIcon, ClipBoardIcon, StatsIcon, HistoryIcon } from '../constants/Icons'
 
 type Props = {
   goToQuickWorkout: () => void
   goToWorkoutHistory: () => void
   goToEditPersonalStats: () => void
-  quickWorkoutDescription: string
-  chooseAWorkoutDescription: string
-  newWorkoutDescription: string
-  myProgressDescription: string
-  workoutHistoryDescription: string
-  editPersonalStatsDescription: string
 }
 
 export default function HomeView({
   goToQuickWorkout,
   goToWorkoutHistory,
   goToEditPersonalStats,
-  quickWorkoutDescription,
-  chooseAWorkoutDescription,
-  newWorkoutDescription,
-  myProgressDescription,
-  workoutHistoryDescription,
-  editPersonalStatsDescription
 }: Props) {
+
+  const { 
+    quickWorkoutDescription, 
+    workoutHistoryDescription,
+    editPersonalStatsDescription, 
+  } = homeViewStrings
 
   return (
     <View style={styles.container}>

@@ -6,7 +6,7 @@ import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove }
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    // Your Firebase config here...
+  // Your Firebase config here...
   };
 
 // Initialize Firebase

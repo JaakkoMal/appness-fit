@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, StyleSheet, Button } from 'react-native'
 import { Weight } from '../../types/types'
 import TextLabel from '../textcomponents/TextLabel'
-
 
 type Props = {
   data: Weight

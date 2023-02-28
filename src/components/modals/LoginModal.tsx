@@ -18,12 +18,14 @@ export default function LoginModal({closeModal, onChangeEmail, onChangePassword,
             onChangeText={onChangeEmail}
             keyboardType='email-address'
             placeholder='email'
+            placeholderTextColor='rgba(232, 246, 222, 0.5)'
         />
         <TextInput 
             style={styles.input}
             onChangeText={onChangePassword}
             secureTextEntry={true}
             placeholder='password'
+            placeholderTextColor='rgba(232, 246, 222, 0.5)'
         />
         <CustomButton text='submit' onPress={onSubmit} />
         <Button color='#c0eb6a' title='Close' onPress={closeModal} />
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#c0eb6a',
     borderWidth: 1,
-    fontSize: 16
+    fontSize: 16,
+    color: '#fff'
   }
 })
