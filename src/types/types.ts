@@ -3,10 +3,6 @@ export type LoginCredentials = {
     password: string
 }
 
-export type InputField = {
-  id: number
-}
-
 // NAV
 
 export type LoginStackParamList = {
