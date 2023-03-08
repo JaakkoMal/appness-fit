@@ -1,91 +1,125 @@
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import CustomButton from '../buttons/CustomButton'
-import { InputField } from '../../types/types'
-
-// RTK
-import { useAppDispatch } from '../../redux/hooks'
-import { addMovementName, addReps, addWeight, addSet, removeSet } from '../../redux/features/quickWorkoutSlice'
+import { TrashCanIcon } from '../../constants/Icons'
+import { Set } from '../../types/types'
 
 type Props = {
-  id: number
+  movementId: number
+  addSetsToExercise: (movementId: number, name: string, set: Set[]) => void
 }
 
+export default function AddMovement({movementId, addSetsToExercise}: Props) {
+  const [inputsEnabled, setInputsEnabled] = useState<boolean>(true)
+  const [exerciseName, setExerciseName] = useState<string>('')
+  const [sets, setSets] = useState<Set[]>([
+    {
+      setNumber: 1,
+      reps: 0,
+      weight: 0
+    }
+  ]
+  )
 
-export default function AddMovement({id}: Props) {
-
-  const [inputFields, setInputFields] = useState<InputField[]>([{id: 1}])  
-  const dispatch = useAppDispatch()
-
-  const addInputField = () => {
-    const newInputFields = [...inputFields]
-    const newInputField = {id: newInputFields[newInputFields.length - 1].id +1}
-    newInputFields.push(newInputField)
-    setInputFields(newInputFields)
-    dispatch(addSet({movementId: id, setNumber: newInputFields[newInputFields.length - 1].id}))
+  const addEmptySetInputFields = () => {
+    const newSets = [...sets]
+    const newSetInput = {setNumber: newSets[newSets.length - 1].setNumber +1, reps: 0, weight: 0}
+    newSets.push(newSetInput)
+    setSets(newSets)
+    console.log(newSets)
   }
 
-  const removeInputField = (inputFieldId: number) => {
-    console.log(inputFieldId)
-    if (inputFieldId > 1){
-      const newInputFields = [...inputFields]
-      const inputFieldIndex = newInputFields.findIndex(i => i.id === inputFieldId)
-      if (inputFieldIndex !== -1) {
-        newInputFields.splice(inputFieldIndex, 1)
-        dispatch(removeSet({movementId: id, setNumber: inputFieldId}))
+  const removeSet = (setNumber: number) => {
+    if (setNumber > 1){
+      const newSets = [...sets]
+      const setIndex = newSets.findIndex(i => i.setNumber === setNumber)
+      if (setIndex !== -1) {
+        newSets.splice(setIndex, 1)
         let count = 1
-        newInputFields.forEach(inputField => {
-          inputField.id = count
+        newSets.forEach(set => {
+          set.setNumber = count
           count += 1
         })
-        setInputFields(newInputFields)
+        setSets(newSets)
       }
     }
+  }
+
+  const onChangeExerciseName = (name: string) => {
+    setExerciseName(name)
+  }
+
+  const onChangeReps = (setNumber: number, reps: number) => {
+    const newSets = [...sets]
+    const setIndex = newSets.findIndex(i => i.setNumber === setNumber)
+    if (setIndex!== -1) {
+      newSets[setIndex].reps = reps
+      setSets(newSets)
+    }
+  }
+
+  const onChangeWeight = (setNumber: number, weight: number) => {
+    const newSets = [...sets]
+    const setIndex = newSets.findIndex(i => i.setNumber === setNumber)
+    if (setIndex!== -1) {
+      newSets[setIndex].weight = weight
+      setSets(newSets)
+    }
+  }
+
+  const saveSets = () => {
+    addSetsToExercise(movementId, exerciseName, sets)
+    setInputsEnabled(false)
   }
 
   return (
     <View style={styles.container}>  
       <TextInput 
-        style={styles.input}
+        style={[styles.input, !inputsEnabled && {color: '#c0eb6a'}]}
         textAlign='center'
+        value={exerciseName}
+        editable={inputsEnabled}
         placeholder='exercise name'
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
-        onChangeText={text => dispatch(addMovementName({movementId: id, name: text}))}
+        onChangeText={text => onChangeExerciseName(text)}
       />
       {
-      inputFields.map(field => (
-        <View key={field.id} style={styles.innerContainer}>
+      sets.map(set => (
+        <View key={set.setNumber} style={styles.innerContainer}>
           <View>
-            <Text style={{color: '#c0eb6a'}}>Set {field.id}</Text>
+            <Text style={{color: '#c0eb6a'}}>Set {set.setNumber}</Text>
               <TextInput 
-                style={styles.smallInput}
+                style={[styles.smallInput, !inputsEnabled && {color: '#c0eb6a'}]}
                 textAlign='center'
                 keyboardType='number-pad'
+                editable={inputsEnabled}
                 placeholder='reps'
                 placeholderTextColor='rgba(232, 246, 222, 0.8)'
-                onChangeText={text => dispatch(addReps({movementId: id, setNumber: field.id, reps: Number(text)}))}
+                onChangeText={text => onChangeReps(set.setNumber, Number(text))}
               />
               <TextInput 
-                style={styles.smallInput}
+                style={[styles.smallInput, !inputsEnabled && {color: '#c0eb6a'}]}
                 textAlign='center'
                 keyboardType='numeric'
+                editable={inputsEnabled}
                 placeholder='weight'
                 placeholderTextColor='rgba(232, 246, 222, 0.8)'
-                onChangeText={text => dispatch(addWeight({movementId: id, setNumber: field.id, weight: Number(text.replace(',','.'))}))}
+                onChangeText={text => onChangeWeight(set.setNumber, Number(text))}
               />
               </View>
               {
-              field.id > 1 && 
-                <Button 
-                  title='delete' 
-                  onPress={() => removeInputField(field.id)}
-                  color='#7c8a81'
-                />
+              (set.setNumber > 1 && inputsEnabled)&& 
+              <Pressable onPress={() => removeSet(set.setNumber)}>
+                <TrashCanIcon />
+              </Pressable>
               }
           </View>
         ))
       }
-    <CustomButton text='+ set' fontSize={20} onPress={addInputField} />
+    {inputsEnabled &&
+    <CustomButton text='+ set' fontSize={20} onPress={addEmptySetInputFields} />
+    }  
+    <CustomButton text={inputsEnabled ? 'set done' : 'edit'} fontSize={18} onPress={inputsEnabled ? saveSets : () => setInputsEnabled(true)} />
     </View>
   )
 }
