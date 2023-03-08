@@ -1,27 +1,28 @@
 import React, { useState} from 'react'
+import { Alert } from 'react-native'
 import { createUser } from '../utils/firebaseFunctions/userFunctions'
 import SignUpView from '../views/SignUpView'
+import { LoginStackParamList, UserState, Weight } from '../types/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+type Props = NativeStackScreenProps<LoginStackParamList, 'SignUp'>
 
-// RTK
-import { useAppSelector, useAppDispatch } from '../redux/hooks'
+const initialUser: UserState = {
+  userId: '',
+  email: '',
+  password: '',
+  firstName: '',
+  lastName: '',
+  height: null,
+  weightArray: [],
+  goalWeight: null,
+  gender: '',
+  activityLevel: null
+}
 
-import { Weight } from '../types/types'
-import { 
-  setEmail, 
-  setPassword, 
-  setFirstName, 
-  setLastName, 
-  setHeight, 
-  setWeight, 
-  setGoalWeight, 
-  setGender, 
-  setActivityLevel 
-} from '../redux/features/userSlice'
-
-export default function SignUpScreen() {
-
-  const user = useAppSelector((state) => state.user)
-  const dispatch = useAppDispatch()
+export default function SignUpScreen({navigation}: Props) {
+  const [user, setUser] = useState<UserState>(initialUser)
+  const [verificationPassword, setVerificationPassword] = useState<string>('')
+  const [showPasswordAlertColor, setShowPasswordAlertColor] = useState<boolean>(false)
   const [form, setForm] = useState<boolean>(true)  
   
   const switchPage = () => {
@@ -29,46 +30,62 @@ export default function SignUpScreen() {
   }
 
   const onChangeEmail = (email: string) => {
-    dispatch(setEmail(email))
+    setUser({...user, email: email})
   }
 
   const onChangePassword = (password: string) => {
-    dispatch(setPassword(password))
+    if (password !== verificationPassword) setShowPasswordAlertColor(true)
+    setUser({...user, password: password})
+  }
+  const onChangePasswordVerification = (password: string) => {
+    if (password === user.password) setShowPasswordAlertColor(false)
+    if (password!== user.password) setShowPasswordAlertColor(true)
+    setVerificationPassword(password)
   }
 
   const onChangeFirstName = (firstName: string) => {
-    dispatch(setFirstName(firstName))
+    setUser({...user, firstName: firstName})
   }
 
   const onChangeLastName = (lastName: string) => {
-    dispatch(setLastName(lastName))
+    setUser({...user, lastName: lastName})
   }
 
   const onChangeHeight = (height: string) => {
-    const heightWithCorrectDecimalPoint = height.replace(',', '.')
-    dispatch(setHeight(Number(heightWithCorrectDecimalPoint)))
+    const heightWithCorrectDecimalPoint = Number(height.replace(',', '.'))
+    setUser({...user, height: heightWithCorrectDecimalPoint})
   }
 
   const onChangeWeight = (weight: string) => {
-    const weightWithCorrectDecimalPoint = weight.replace(',', '.')
+    const weightWithCorrectDecimalPoint = Number(weight.replace(',', '.'))
     const weightObject: Weight = {
-      weight: Number(weightWithCorrectDecimalPoint),
+      weight: weightWithCorrectDecimalPoint,
       weightedOnDate: new Date().toLocaleDateString()
     }
-    dispatch(setWeight(weightObject))
+    setUser({...user, weightArray: [...user.weightArray, weightObject]})
   }
 
   const onChangeGoalWeight = (goalWeight: string) => {
-    const goalWeightWithCorrectDecimalPoint = goalWeight.replace(',', '.')
-    dispatch(setGoalWeight(Number(goalWeightWithCorrectDecimalPoint)))
+    const goalWeightWithCorrectDecimalPoint = Number(goalWeight.replace(',', '.'))
+    setUser({...user, goalWeight: goalWeightWithCorrectDecimalPoint})
   }
 
   const onChangeGender = (gender: string) => {
-    dispatch(setGender(gender))
+    setUser({...user, gender: gender})
   }
 
   const onChangeActivityLevel = (activityLevel: string) => {
-    dispatch(setActivityLevel(Number(activityLevel)))
+    setUser({...user, activityLevel: Number(activityLevel)})
+  }
+
+  const onSubmit = (user: UserState) => {
+    if (user.password === verificationPassword) {
+    createUser(user)
+    navigation.navigate('Start')
+    Alert.alert(`Thank you for signing up, ${user.firstName}!`)
+    } else {
+      Alert.alert('Passwords do not match')
+    }
   }
 
   return (
@@ -78,6 +95,8 @@ export default function SignUpScreen() {
       switchPage={switchPage}
       onChangeEmail={onChangeEmail}
       onChangePassword={onChangePassword}
+      onChangePasswordVerification={onChangePasswordVerification}
+      showPasswordAlertColor={showPasswordAlertColor}
       onChangeFirstName={onChangeFirstName}
       onChangeLastName={onChangeLastName}
       onChangeHeight={onChangeHeight}
@@ -85,7 +104,7 @@ export default function SignUpScreen() {
       onChangeGoalWeight={onChangeGoalWeight}
       onChangeGender={onChangeGender}
       onChangeActivityLevel={onChangeActivityLevel}
-      onSubmit={createUser}
+      onSubmit={onSubmit}
     />
   )
 }

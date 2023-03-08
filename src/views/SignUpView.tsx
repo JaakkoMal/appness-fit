@@ -15,6 +15,8 @@ type Props = {
   switchPage: () => void
   onChangeEmail: (email: string) => void
   onChangePassword: (password: string) => void
+  onChangePasswordVerification: (password: string) => void
+  showPasswordAlertColor: boolean
   onChangeFirstName: (firstName: string) => void
   onChangeLastName: (lastName: string) => void
   onChangeHeight: (height: string) => void
@@ -31,6 +33,8 @@ export default function SignUpView({
   switchPage, 
   onChangeEmail,
   onChangePassword,
+  onChangePasswordVerification,
+  showPasswordAlertColor,
   onChangeFirstName,
   onChangeLastName,
   onChangeHeight,
@@ -51,6 +55,8 @@ export default function SignUpView({
             user={user}
             onChangeEmail={onChangeEmail}
             onChangePassword={onChangePassword}
+            onChangePasswordVerification={onChangePasswordVerification}
+            showPasswordAlertColor={showPasswordAlertColor}
             onChangeFirstName={onChangeFirstName}
             onChangeLastName={onChangeLastName}
           />

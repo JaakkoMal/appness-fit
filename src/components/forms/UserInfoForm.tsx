@@ -8,6 +8,8 @@ type Props = {
   user: UserState
   onChangeEmail: (email: string) => void
   onChangePassword: (password: string) => void
+  onChangePasswordVerification: (password: string) => void
+  showPasswordAlertColor: boolean
   onChangeFirstName: (firstName: string) => void
   onChangeLastName: (lastName: string) => void
 }
@@ -16,6 +18,8 @@ export default function UserInfoForm({
   user,
   onChangeEmail,
   onChangePassword,
+  onChangePasswordVerification,
+  showPasswordAlertColor,
   onChangeFirstName,
   onChangeLastName
 }: Props) {
@@ -39,10 +43,10 @@ export default function UserInfoForm({
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, showPasswordAlertColor && {borderColor: 'red'}]}
         placeholder='re-enter password'
         secureTextEntry={true}
-        onChangeText={() => {}}
+        onChangeText={onChangePasswordVerification}
         placeholderTextColor='rgba(232, 246, 222, 0.8)'
       />
       <TextInput
