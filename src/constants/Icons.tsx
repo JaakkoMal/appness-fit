@@ -24,3 +24,7 @@ export const ProfileIcon = () => {
 export const HistoryIcon = () => {
   return <MaterialIcons name="history" size={24} color="black" />
 }
+
+export const TrashCanIcon = () => {
+  return <Ionicons name="trash-sharp" size={24} color="black" />
+}
