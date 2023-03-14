@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit"
 import loginReducer from './features/loginSlice'
 import userReducer from './features/userSlice'
+import quickWorkoutSlice from "./features/quickWorkoutSlice"
 import workoutsReducer from './features/workoutsSlice'
 
 export const store = configureStore({
     reducer: {
         login: loginReducer,
         user: userReducer,
+        quickWorkout: quickWorkoutSlice,
         workouts: workoutsReducer
     }
 })

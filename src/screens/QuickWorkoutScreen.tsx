@@ -2,59 +2,32 @@ import React, { useState } from 'react'
 import { db, doc, updateDoc, arrayUnion } from '../../firebase/firebaseConfig'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { addWorkout } from '../redux/features/workoutsSlice'
+import { setWorkoutInitialState } from '../redux/features/quickWorkoutSlice'
 import QuickWorkoutView from '../views/QuickWorkoutView'
-import { QuickWorkoutState, Movement, Set, HomeStackParamList} from '../types/types'
+import { InputFieldIndex, QuickWorkoutState } from '../types/types'
+import { HomeStackParamList } from '../types/types'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 type Props = NativeStackScreenProps<HomeStackParamList, 'QuickWorkout'>
 
-const workoutInitialState: Movement[] = [
-  {
-    movementId: 1,
-    name: '',
-    sets: [
-      {
-        setNumber: 1,
-        reps: 0,
-        weight: 0
-      }      
-    ]
-  }
-]
+
 export default function QuickWorkoutScreen({navigation}: Props) {
 
   const dispatch = useAppDispatch()
+  const quickWorkout = useAppSelector((state) => state.quickWorkout)
   const userId = useAppSelector((state) => state.user.userId)
-  const [workout, setWorkout] = useState<Movement[]>(workoutInitialState)
+  const [inputFields, setInputFields] = useState<InputFieldIndex[]>([{id: 1}])
 
-
-  const addEmptyExerciseInputField = () => {
-    const newWorkout = [...workout]
-    const newExercise = {
-      movementId: newWorkout[newWorkout.length - 1].movementId + 1,
-      name: '',
-      sets: []
-    }
-    newWorkout.push(newExercise)
-    setWorkout(newWorkout)
-  }
-
-  const addSetsToExercise = (movementId: number, name: string, sets: Set[]) => {
-    const newWorkout = [...workout]
-    const exerciseIndex = newWorkout.findIndex(i => i.movementId === movementId)
-    if (exerciseIndex!== -1) {
-      newWorkout[exerciseIndex].name = name
-      newWorkout[exerciseIndex].sets = sets
-      setWorkout(newWorkout)
-    }
+  const addInputField = () => {
+    const newInputFields = [...inputFields]
+    const newInputField = {id: newInputFields[newInputFields.length - 1].id +1}
+    newInputFields.push(newInputField)
+    setInputFields(newInputFields)
   }
 
   const saveWorkout = () => {
-    const newWorkout: QuickWorkoutState = {
-      workoutDate: new Date().toLocaleDateString(),
-      workout: workout
-    }
-    dispatch(addWorkout(newWorkout))
-    addWorkoutToFirebase(newWorkout, userId)
+    dispatch(addWorkout(quickWorkout))
+    addWorkoutToFirebase(quickWorkout, userId)
+    dispatch(setWorkoutInitialState())
     goToHomeView()
   }
 
@@ -71,10 +44,9 @@ export default function QuickWorkoutScreen({navigation}: Props) {
 
   return (
     <QuickWorkoutView
-      workout={workout}
-      addEmptyExerciseInputField={addEmptyExerciseInputField}
+      inputFields={inputFields}
+      addInputField={addInputField}
       saveWorkout={saveWorkout}
-      addSetsToExercise={addSetsToExercise}
     />
   )
 }

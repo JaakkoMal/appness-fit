@@ -3,19 +3,17 @@ import { View, ScrollView, StyleSheet,  } from 'react-native'
 import MainHeading from '../components/textcomponents/MainHeading'
 import AddMovement from '../components/forms/AddMovement'
 import CustomButton from '../components/buttons/CustomButton'
-import { Movement, Set } from '../types/types'
+import { InputFieldIndex } from '../types/types'
 
 type Props = {
-  workout: Movement[]
-  addEmptyExerciseInputField: () => void
-  addSetsToExercise: (movementId: number, name: string, set: Set[]) => void
+  inputFields: InputFieldIndex[]
+  addInputField: () => void
   saveWorkout: () => void
 }
 
 export default function QuickWorkoutView({
-  workout,
-  addEmptyExerciseInputField,
-  addSetsToExercise,
+  inputFields,
+  addInputField,
   saveWorkout
 }: Props) {
 
@@ -23,12 +21,12 @@ export default function QuickWorkoutView({
     <View style={styles.container}>
       <MainHeading text="Quick workout" fontSize={24} />
         <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
-          {workout.map(exercise => (
-          <View key={exercise.movementId}>
-            <AddMovement movementId={exercise.movementId} addSetsToExercise={addSetsToExercise}/>
+          {inputFields.map(field => (
+          <View key={field.id}>
+            <AddMovement id={field.id} />
           </View>
           ))}
-          <CustomButton text='+ exercise' onPress={addEmptyExerciseInputField} />
+          <CustomButton text='+ exercise' onPress={addInputField} />
           <CustomButton text='Finish' onPress={saveWorkout} color='rgba(250, 167, 72, 0.5)'/>
         </ScrollView>
     </View>

@@ -35,9 +35,8 @@ export const chartConfig = {
   labelColor: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
   propsForDots: {
     r: "3",
-    strokeWidth: "2",
-    stroke: "#c0eb6a"
-  }
+    strokeWidth: "1",
+  },
 }
 
 // Text constants

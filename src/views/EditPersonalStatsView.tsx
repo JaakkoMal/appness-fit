@@ -23,7 +23,10 @@ export default function EditPersonalStatsView({ userStats, onChangeWeight }: Pro
       <MainHeading text="Personal stats" fontSize={24} />
         <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
-          <WeightChart data={userStats.weightArray}/>
+          <WeightChart 
+            data={userStats.weightArray.slice(userStats.weightArray.length - 10)} 
+            goalData={userStats.goalWeight}
+          />
           <TextInput 
             style={styles.input}
             value={weightInput}

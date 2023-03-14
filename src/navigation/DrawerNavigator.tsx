@@ -1,6 +1,7 @@
 import React from 'react'
-import { createDrawerNavigator } from '@react-navigation/drawer'
+import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer'
 import { DrawerNavParamList } from '../types/types'
+import CustomDrawerContent from './CustomDrawerContent'
 import HomeStack from './HomeStack'
 import ProfileScreen from '../screens/ProfileScreen'
 
@@ -16,7 +17,10 @@ const drawerOptions = {
 
 export default function DrawerNavigator() {
   return (
-    <Drawer.Navigator screenOptions={drawerOptions}>
+    <Drawer.Navigator 
+      screenOptions={drawerOptions}
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
       <Drawer.Screen 
         name="HomeStack" 
         component={HomeStack}
@@ -34,3 +38,12 @@ export default function DrawerNavigator() {
     </Drawer.Navigator>
   )
 }
+
+/*const LogoutButton = (props: DrawerContentComponentProps) => {
+  return (
+  <DrawerContentScrollView {...props}>
+    <DrawerItemList {...props} />
+    <DrawerItem label='Logout' onPress={() => {}} />
+  </DrawerContentScrollView>
+  )
+}*/
