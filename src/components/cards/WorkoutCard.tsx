@@ -20,11 +20,11 @@ export default function WorkoutCard({ workout }: Props) {
       {showDetails &&
       <View>
       {
-      workout.workout.map((workoutData, i) => (
+      workout.exercises.map((exercise, i) => (
         <View key={i}>
-          <TextLabel text={workoutData.name} fontSize={18} />
+          <TextLabel text={exercise.name} fontSize={18} />
           {
-          workoutData.sets.map((setData, i) => (
+          exercise.sets.map((setData, i) => (
             <TextLabel 
               key={i}
               text={(setData.reps.toString() + (setData.weight !== 0 ? ' * ' + setData.weight : '')).toString()} 

@@ -14,7 +14,7 @@ const initialUser: UserState = {
   lastName: '',
   height: null,
   weightArray: [],
-  goalWeight: null,
+  goalWeight: 0,
   gender: '',
   activityLevel: null
 }

@@ -36,3 +36,4 @@ export const addWorkoutDoc = async (uid: string) => {
         workouts: []
     })
 }
+

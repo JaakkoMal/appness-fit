@@ -5,16 +5,16 @@ import WorkoutCard from '../components/cards/WorkoutCard'
 import MainHeading from '../components/textcomponents/MainHeading'
 
 type Props = {
-  workoutsDoc: WorkoutsState
+  workouts: WorkoutsState
 }
 
-export default function WorkoutHistoryView({ workoutsDoc }: Props) {
+export default function WorkoutHistoryView({ workouts }: Props) {
   return (
     <View style={styles.container}>
       <MainHeading text='Workout history' fontSize={24}/>  
       <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
         {
-        workoutsDoc.map((workout, i) => (
+        workouts.slice(0).reverse().map((workout, i) => (
           <WorkoutCard key={i} workout={workout}/>
         ))
         }

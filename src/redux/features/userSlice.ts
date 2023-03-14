@@ -11,7 +11,7 @@ const initialState: UserState = {
   lastName: '',
   height: null,
   weightArray: [{weight: 0, weightedOnDate: new Date().toLocaleDateString()}],
-  goalWeight: null,
+  goalWeight: 0,
   gender: '',
   activityLevel: null
 }
@@ -22,12 +22,24 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<UserState>) => {
       return action.payload
+    },
+    updateWeight: (state, action: PayloadAction<Weight>) => {
+      state.weightArray.push(action.payload)
+    },
+    updateGoalWeight: (state, action: PayloadAction<number>) => {
+      state.goalWeight = action.payload
+    },
+    updateActivityLevel: (state, action: PayloadAction<number>) => {
+      state.activityLevel = action.payload
     }
   }
 })
 
 export const { 
-  setUser
+  setUser,
+  updateWeight,
+  updateGoalWeight,
+  updateActivityLevel
 } = userSlice.actions
 export const selectUser = (state: RootState) => state.user
 export default userSlice.reducer

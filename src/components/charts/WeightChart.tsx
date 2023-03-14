@@ -8,9 +8,10 @@ import ChartDataModal from '../modals/ChartDataModal'
 
 type Props = {
   data: Weight[]
+  goalData: number
 }
 
-export default function WeightChart({ data }: Props) {
+export default function WeightChart({ data, goalData }: Props) {
 
   const [modalVisible, setModalVisible] = useState<boolean>(false)  
   const [modalData, setModalData] = useState<Weight>(data[0])
@@ -30,12 +31,24 @@ export default function WeightChart({ data }: Props) {
         <LineChart
           data={{
             labels: data.map(weight => ''),
-            datasets: [{ data: data.map(weight => weight.weight) }]
+            datasets: [
+              { 
+                data: data.map(weight => weight.weight),
+                strokeWidth: 5,
+                color: (opacity = 1) => `rgba(192, 235, 106, ${opacity})`,
+              }, 
+              { 
+                data: data.map(weight => goalData),
+                strokeWidth: 1,
+                color: (opacity = 1) => `rgba(252, 186, 3, ${opacity})`,
+              }
+            ]
           }}
           width={Dimensions.get("screen").width}
           height={220}
           chartConfig={chartConfig}
           onDataPointClick={({index}) => showModal(index)}
+          withShadow={false}
         />
         <Modal
         visible={modalVisible}

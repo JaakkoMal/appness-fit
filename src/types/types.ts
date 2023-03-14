@@ -3,6 +3,10 @@ export type LoginCredentials = {
     password: string
 }
 
+export type InputFieldIndex = {
+  id: number
+}
+
 // NAV
 
 export type LoginStackParamList = {
@@ -41,7 +45,7 @@ export interface UserState {
   lastName: string
   height: number | null
   weightArray: Weight[]
-  goalWeight: number | null
+  goalWeight: number
   gender: string
   activityLevel: number | null
 }
@@ -52,15 +56,15 @@ export interface Set {
   weight: number
 }
 
-export interface Movement {
-  movementId: number
+export interface Exercise {
+  exerciseId: number
   name: string
   sets: Set[]
 }
 
 export type QuickWorkoutState = {
   workoutDate: string,
-  workout: Movement[]
+  exercises: Exercise[]
 }
 
 export type WorkoutsState = QuickWorkoutState[]

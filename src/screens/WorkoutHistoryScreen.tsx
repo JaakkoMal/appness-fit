@@ -4,9 +4,9 @@ import { useAppSelector } from '../redux/hooks'
 
 export default function WorkoutHistoryScreen() {
 
-  const workoutsDoc = useAppSelector((state) => state.workouts)  
+  const workouts = useAppSelector((state) => state.workouts)  
 
   return (
-    <WorkoutHistoryView workoutsDoc={workoutsDoc}/>
+    <WorkoutHistoryView workouts={workouts}/>
   )
 }
